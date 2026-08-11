@@ -15,6 +15,14 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "Australian Education Centre (AEC)",
   description: "Your Complete Journey to Australian & New Zealand Education. From Visa to Career Success - We're With You Every Step.",
+  icons: {
+    icon: [
+      { url: "/icon.png", type: "image/png" },
+      { url: "/auseducenter_logo.png", type: "image/png" }
+    ],
+    shortcut: "/icon.png",
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({
