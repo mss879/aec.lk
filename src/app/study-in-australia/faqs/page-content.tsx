@@ -89,7 +89,8 @@ export function StudyInAustraliaFAQsContent() {
               <Image 
                 src="/faq_consulting.png" 
                 alt="AEC direct support" 
-                fill 
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px" 
                 className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
@@ -174,7 +175,8 @@ export function StudyInAustraliaFAQsContent() {
             <Image 
               src="/faq_support.png" 
               alt="FAQ support" 
-              fill 
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px" 
               className="object-cover group-hover:scale-105 transition-transform duration-1000"
             />
             <div className="absolute inset-0 bg-black/20" />

@@ -207,9 +207,21 @@ export function Footer() {
               </li>
               <li className="flex gap-3">
                 <Phone className="w-4 h-4 mt-0.5 shrink-0 text-[#124b8d]" />
-                <span className="flex flex-col">
-                  <a href="tel:+94115500100" className="hover:text-[#124b8d] transition-colors">+94 11 5500100</a>
-                  <a href="tel:+94773950448" className="hover:text-[#124b8d] transition-colors">+94 77 395 0448</a>
+                {/* Tap targets: bare inline links were under the 24px
+                    minimum and sat right on top of each other. */}
+                <span className="flex flex-col gap-1">
+                  <a
+                    href="tel:+94115500100"
+                    className="inline-flex min-h-6 items-center hover:text-[#124b8d] transition-colors"
+                  >
+                    +94 11 5500100
+                  </a>
+                  <a
+                    href="tel:+94773950448"
+                    className="inline-flex min-h-6 items-center hover:text-[#124b8d] transition-colors"
+                  >
+                    +94 77 395 0448
+                  </a>
                 </span>
               </li>
               <li className="flex gap-3">
@@ -249,7 +261,7 @@ export function Footer() {
               <div key={section.title} className="flex flex-col gap-4">
                 <Link
                   href={section.href}
-                  className="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-[#124b8d] transition-colors"
+                  className="text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-[#124b8d] transition-colors"
                 >
                   {section.title}
                 </Link>

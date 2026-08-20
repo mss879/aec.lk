@@ -289,7 +289,8 @@ export function UniversitiesCollegesContent() {
               <Image 
                 src="/placement_guide.png" 
                 alt="Placement support" 
-                fill 
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px" 
                 className="object-cover group-hover:scale-105 transition-transform duration-1000"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />

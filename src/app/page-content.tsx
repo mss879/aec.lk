@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { LazyVideo } from "@/components/ui/lazy-video";
 import { CheckCircle, Globe, GraduationCap, Building2, Users, Target, Plane, FileCheck, ArrowRight, MapPin, Phone, Calendar, ArrowUpRight, Search, Plus, ShieldCheck, Briefcase } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -34,38 +35,29 @@ export function HomeContent() {
           <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
             {/* Left Content (Text) */}
             <div className="flex-1 w-full max-w-2xl lg:max-w-3xl pt-12 lg:pt-0">
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-[2rem] sm:text-5xl md:text-[3.5rem] lg:text-[3.8rem] xl:text-[4.2rem] font-black tracking-tighter text-slate-900 leading-[1.02] w-full"
-              >
+              {/* The hero copy is the LCP element, so it must not start at
+                  opacity 0: Chrome does not treat a transparent node as a
+                  paint candidate, which pushed LCP out until framer-motion had
+                  hydrated. These three render from the server HTML and slide
+                  up with a CSS transform, which costs nothing and is skipped
+                  entirely for prefers-reduced-motion. */}
+              <h1 className="hero-rise text-[2rem] sm:text-5xl md:text-[3.5rem] lg:text-[3.8rem] xl:text-[4.2rem] font-black tracking-tighter text-slate-900 leading-[1.02] w-full">
                 <span className="block whitespace-nowrap">Your Complete Journey</span>
                 <span className="text-blue-600 block mt-1 xl:mt-2">to Global Education</span>
-              </motion.h1>
+              </h1>
 
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="text-lg md:text-xl text-slate-700 mt-6 max-w-xl leading-relaxed font-medium"
-              >
+              <p className="hero-rise hero-rise-2 text-lg md:text-xl text-slate-700 mt-6 max-w-xl leading-relaxed font-medium">
                 From university placements and visa approvals to global career success - we support you every step of the way.
-              </motion.p>
+              </p>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="mt-8 flex flex-col sm:flex-row gap-4"
-              >
+              <div className="hero-rise hero-rise-3 mt-8 flex flex-col sm:flex-row gap-4">
                 <Link href="/contact" className="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white rounded-full px-6 py-3 text-base font-bold transition-colors shadow-[4px_4px_0px_rgba(15,23,42,1)] hover:shadow-none hover:translate-y-1 hover:translate-x-1 border-2 border-slate-900 sm:border-transparent">
                   Check Your Eligibility - FREE
                 </Link>
                 <Link href="/services" className="inline-flex items-center justify-center bg-white hover:bg-slate-50 text-slate-900 rounded-full px-6 py-3 text-base font-bold transition-colors shadow-[4px_4px_0px_rgba(15,23,42,1)] hover:shadow-none hover:translate-y-1 hover:translate-x-1 border-2 border-slate-900">
                   Explore Our Services
                 </Link>
-              </motion.div>
+              </div>
             </div>
 
             {/* Right Content (Framer Motion UI Mockup) */}
@@ -260,7 +252,7 @@ export function HomeContent() {
             <h2 className="text-4xl md:text-[2.75rem] font-medium tracking-tight text-[#11181C] leading-[1.1] mb-6">
               Why We&apos;re Different From <br className="hidden md:block" /> Other Education Agents
             </h2>
-            <p className="text-slate-500 max-w-2xl text-lg">
+            <p className="text-slate-600 max-w-2xl text-lg">
               We don&apos;t just get you a visa - we build your entire future in Australia or New Zealand
             </p>
           </div>
@@ -275,13 +267,9 @@ export function HomeContent() {
                 </p>
               </div>
               <div className="mt-auto relative overflow-hidden h-48 w-full border-t border-slate-100/50">
-                <video
+                <LazyVideo
                   src="/hero-opt-1-compressed.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="object-cover absolute inset-0 w-full h-full"
+                  poster="/hero-opt-1-compressed-poster.jpg"
                 />
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent pt-12 pb-4 px-4 overflow-hidden z-15">
                   <div className="flex gap-4 whitespace-nowrap w-max animate-marquee">
@@ -333,7 +321,8 @@ export function HomeContent() {
                   <div className="absolute top-[20%] left-[25%] -translate-x-1/2 -translate-y-1/2 z-30">
                     <div className="h-9 px-2.5 rounded-full bg-white border border-slate-200/80 shadow-[0_4px_12px_rgba(0,0,0,0.05)] flex items-center gap-2 group/node cursor-default transition-transform duration-300 hover:-translate-y-1 hover:border-[#10b981] hover:shadow-[0_6px_16px_rgba(16,185,129,0.1)]">
                       <div className="w-6 h-6 rounded-full overflow-hidden relative shrink-0 border border-slate-100 shadow-sm">
-                        <Image src="/office_melbourne.png" alt="Melbourne" fill className="object-cover group-hover/node:scale-110 transition-transform duration-500" />
+                        <Image src="/office_melbourne.png" alt="Melbourne" fill
+                  sizes="24px" className="object-cover group-hover/node:scale-110 transition-transform duration-500" />
                       </div>
                       <div className="flex items-center gap-1.5 pr-0.5">
                         <span className="text-slate-800 text-[10px] font-bold tracking-wider">MELBOURNE</span>
@@ -349,7 +338,8 @@ export function HomeContent() {
                   <div className="absolute top-[25%] left-[75%] -translate-x-1/2 -translate-y-1/2 z-30">
                     <div className="h-9 px-2.5 rounded-full bg-white border border-slate-200/80 shadow-[0_4px_12px_rgba(0,0,0,0.05)] flex items-center gap-2 group/node cursor-default transition-transform duration-300 hover:translate-y-1 hover:border-[#10b981] hover:shadow-[0_6px_16px_rgba(16,185,129,0.1)]">
                       <div className="w-6 h-6 rounded-full overflow-hidden relative shrink-0 border border-slate-100 shadow-sm">
-                        <Image src="/office_adelaide.png" alt="Adelaide" fill className="object-cover group-hover/node:scale-110 transition-transform duration-500" />
+                        <Image src="/office_adelaide.png" alt="Adelaide" fill
+                  sizes="24px" className="object-cover group-hover/node:scale-110 transition-transform duration-500" />
                       </div>
                       <div className="flex items-center gap-1.5 pr-0.5">
                         <span className="text-slate-800 text-[10px] font-bold tracking-wider">ADELAIDE</span>
@@ -365,7 +355,8 @@ export function HomeContent() {
                   <div className="absolute top-[80%] left-[25%] -translate-x-1/2 -translate-y-1/2 z-30">
                     <div className="h-9 px-2.5 rounded-full bg-white border border-slate-200/80 shadow-[0_4px_12px_rgba(0,0,0,0.05)] flex items-center gap-2 group/node cursor-default transition-transform duration-300 hover:-translate-y-0.5 hover:border-[#10b981] hover:shadow-[0_6px_16px_rgba(16,185,129,0.1)]">
                       <div className="w-6 h-6 rounded-full overflow-hidden relative shrink-0 border border-slate-100 shadow-sm">
-                        <Image src="/office_colombo.png" alt="Colombo" fill className="object-cover group-hover/node:scale-110 transition-transform duration-500" />
+                        <Image src="/office_colombo.png" alt="Colombo" fill
+                  sizes="24px" className="object-cover group-hover/node:scale-110 transition-transform duration-500" />
                       </div>
                       <div className="flex items-center gap-1.5 pr-0.5">
                         <span className="text-slate-800 text-[10px] font-bold tracking-wider">COLOMBO</span>
@@ -381,7 +372,8 @@ export function HomeContent() {
                   <div className="absolute top-[75%] left-[75%] -translate-x-1/2 -translate-y-1/2 z-30">
                     <div className="h-9 px-2.5 rounded-full bg-white border border-slate-200/80 shadow-[0_4px_12px_rgba(0,0,0,0.05)] flex items-center gap-2 group/node cursor-default transition-transform duration-300 hover:translate-y-1 hover:border-[#10b981] hover:shadow-[0_6px_16px_rgba(16,185,129,0.1)]">
                       <div className="w-6 h-6 rounded-full overflow-hidden relative shrink-0 border border-slate-100 shadow-sm">
-                        <Image src="/office_dubai.png" alt="Dubai" fill className="object-cover group-hover/node:scale-110 transition-transform duration-500" />
+                        <Image src="/office_dubai.png" alt="Dubai" fill
+                  sizes="24px" className="object-cover group-hover/node:scale-110 transition-transform duration-500" />
                       </div>
                       <div className="flex items-center gap-1.5 pr-0.5">
                         <span className="text-slate-800 text-[10px] font-bold tracking-wider">DUBAI</span>
@@ -405,13 +397,9 @@ export function HomeContent() {
                 </p>
               </div>
               <div className="mt-auto relative overflow-hidden h-48 w-full border-t border-slate-100/50">
-                <video
+                <LazyVideo
                   src="/Travel_video_animation_airplane_compressed.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="object-cover absolute inset-0 w-full h-full"
+                  poster="/Travel_video_animation_airplane_compressed-poster.jpg"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent z-10" />
 
@@ -448,10 +436,12 @@ export function HomeContent() {
 
               <div className="w-full md:w-1/2 lg:w-5/12 h-64 relative flex items-center justify-center mt-8 md:mt-0 z-0 perspective-[1000px]">
                 <div className="absolute right-[5%] top-[10%] w-40 h-56 rounded-2xl overflow-hidden shadow-2xl rotate-[12deg] group-hover:rotate-[6deg] transition-all duration-500 border border-white/20">
-                  <Image src="/why_card1.png" alt="Student" fill className="object-cover" />
+                  <Image src="/why_card1.png" alt="Student" fill
+                  sizes="160px" className="object-cover" />
                 </div>
                 <div className="absolute right-[45%] top-0 w-44 h-60 rounded-2xl overflow-hidden shadow-2xl -rotate-[6deg] group-hover:-rotate-[12deg] transition-all duration-500 z-10 border border-white/20">
-                  <Image src="/why_card2.png" alt="Professional" fill className="object-cover" />
+                  <Image src="/why_card2.png" alt="Professional" fill
+                  sizes="176px" className="object-cover" />
                 </div>
                 <div className="absolute right-[25%] bottom-[15%] w-16 h-16 bg-[#11181C] rounded-full flex items-center justify-center shadow-xl z-20 border-[4px] border-[#E9EBE2] transition-transform duration-300 group-hover:scale-105">
                   <Target className="w-7 h-7 text-[#10b981]" />
@@ -466,6 +456,7 @@ export function HomeContent() {
                   src="/why_settlement.png"
                   alt="Settlement"
                   fill
+                  sizes="(max-width: 768px) 100vw, 420px"
                   className="object-cover object-bottom opacity-90 group-hover:scale-105 transition-transform duration-1000"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-[#FAF9F6] from-40% via-[#FAF9F6]/90 via-60% to-transparent"></div>
@@ -558,7 +549,7 @@ export function HomeContent() {
         <div className="container mx-auto px-4 lg:px-6 xl:px-8 max-w-7xl">
           <div className="flex justify-between items-end mb-16">
             <div>
-              <span className="text-xs font-bold text-slate-500 tracking-widest uppercase mb-4 block border border-slate-200 px-3 py-1 rounded-full w-fit bg-white">GLOBAL</span>
+              <span className="text-xs font-bold text-slate-600 tracking-widest uppercase mb-4 block border border-slate-200 px-3 py-1 rounded-full w-fit bg-white">GLOBAL</span>
               <h2 className="text-4xl md:text-[2.75rem] font-medium tracking-tight text-[#11181C] leading-[1.1]">
                 Study Destinations <br /> Overview
               </h2>
@@ -571,7 +562,8 @@ export function HomeContent() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Featured Destination: Australia */}
             <div className="lg:col-span-2 bg-slate-100 rounded-3xl border border-slate-100 overflow-hidden relative group h-[400px] lg:h-full">
-              <Image src="/dest_australia.png" alt="Australia" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+              <Image src="/dest_australia.png" alt="Australia" fill
+                  sizes="(max-width: 1024px) 100vw, 640px" className="object-cover group-hover:scale-105 transition-transform duration-700" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#11181C]/90 via-[#11181C]/20 to-transparent"></div>
               <div className="absolute top-6 right-6">
                 <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white">
@@ -608,7 +600,8 @@ export function HomeContent() {
               ].map((dest, i) => (
                 <Link key={i} href={`/study-worldwide/${dest.id}`} className="bg-white rounded-2xl p-3 border border-slate-100 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-600/5 transition-all duration-300 flex items-center group flex-1">
                   <div className="w-20 h-20 shrink-0 rounded-xl overflow-hidden relative">
-                    <Image src={dest.image} alt={dest.country} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <Image src={dest.image} alt={dest.country} fill
+                  sizes="80px" className="object-cover group-hover:scale-110 transition-transform duration-500" />
                   </div>
                   <div className="ml-4 flex-1">
                     <h3 className="text-lg font-semibold text-[#11181C] mb-0.5 group-hover:text-blue-600 transition-colors">{dest.country}</h3>
@@ -632,7 +625,7 @@ export function HomeContent() {
       <section ref={processRef} className="py-24 bg-[#FAF8F5] relative overflow-hidden">
         <div className="container mx-auto px-4 lg:px-6 xl:px-8 max-w-6xl">
           <div className="flex flex-col items-center text-center mb-16">
-            <span className="text-xs font-bold text-slate-500 tracking-widest uppercase mb-4 border border-slate-200 px-3 py-1 rounded-full bg-white">OUR PROCESS</span>
+            <span className="text-xs font-bold text-slate-600 tracking-widest uppercase mb-4 border border-slate-200 px-3 py-1 rounded-full bg-white">OUR PROCESS</span>
             <h2 className="text-4xl md:text-[2.75rem] font-medium tracking-tight text-[#11181C] leading-[1.1] mb-4">
               How We Help You<br />Through Every Stage
             </h2>
@@ -661,9 +654,9 @@ export function HomeContent() {
                         setActiveStep(i);
                         setIsProcessPaused(true);
                       }}
-                      className={`flex items-center gap-6 p-4 rounded-2xl transition-all duration-300 text-left relative z-10 ${isActive ? 'bg-white shadow-md shadow-slate-200/50 border border-slate-100' : 'hover:bg-slate-100 opacity-70 hover:opacity-100'}`}
+                      className={`flex items-center gap-6 p-4 rounded-2xl transition-all duration-300 text-left relative z-10 ${isActive ? 'bg-white shadow-md shadow-slate-200/50 border border-slate-100' : 'hover:bg-slate-100 opacity-90 hover:opacity-100'}`}
                     >
-                      <div className={`w-12 h-12 rounded-full flex items-center justify-center shrink-0 transition-colors duration-300 ${isActive ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30' : 'bg-slate-200 text-slate-500'}`}>
+                      <div className={`w-12 h-12 rounded-full flex items-center justify-center shrink-0 transition-colors duration-300 ${isActive ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30' : 'bg-slate-200 text-slate-700'}`}>
                         <span className="font-bold text-sm">0{i + 1}</span>
                       </div>
                       <div className={`font-semibold text-lg transition-colors duration-300 ${isActive ? 'text-blue-600' : 'text-[#11181C]'}`}>
@@ -703,7 +696,8 @@ export function HomeContent() {
                       { title: "On-ground Settlement & Career", desc: "We don't abandon you after arrival. Enjoy On-ground Settlement & Career Support. Finding accommodation, part-time jobs, and integrating into a new culture has never been easier.", image: "/stage5.png" }
                     ].filter((_, i) => i === activeStep).map((stage, idx) => (
                       <div key={idx} className="absolute inset-0 w-full h-full flex flex-col justify-end">
-                        <Image src={stage.image} alt={stage.title} fill className="object-cover" priority />
+                        <Image src={stage.image} alt={stage.title} fill
+                  sizes="(max-width: 1024px) 100vw, 700px" className="object-cover" priority />
 
                         {/* Premium Gradient Overlay */}
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/70 to-transparent z-10" />
@@ -864,7 +858,7 @@ export function HomeContent() {
       <section className="py-24 bg-[#FAF8F5]">
         <div className="container mx-auto px-4 lg:px-6 xl:px-8 max-w-7xl">
           <div className="flex flex-col items-center text-center mb-16">
-            <span className="text-xs font-bold text-slate-500 tracking-widest uppercase mb-4 border border-slate-200 px-3 py-1 rounded-full">INSIGHTS</span>
+            <span className="text-xs font-bold text-slate-600 tracking-widest uppercase mb-4 border border-slate-200 px-3 py-1 rounded-full">INSIGHTS</span>
             <h2 className="text-4xl md:text-[2.75rem] font-medium tracking-tight text-[#11181C] leading-[1.1]">
               Expert-Led Talks & <br className="hidden md:block" /> Latest News
             </h2>
@@ -918,6 +912,7 @@ export function HomeContent() {
                   <p className="text-sm text-slate-500 mb-6 flex-1">{article.excerpt}</p>
                   <Link href={article.href} className="w-full py-2.5 border border-slate-200 rounded-full text-sm font-semibold text-[#11181C] hover:bg-slate-50 hover:border-slate-300 transition-colors mt-auto text-center inline-block">
                     Read More
+                    <span className="sr-only"> about {article.title}</span>
                   </Link>
                 </div>
               </div>

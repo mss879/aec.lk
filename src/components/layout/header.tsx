@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Menu, X, ChevronDown, ArrowUpRight } from "lucide-react";
 import { useState, useEffect } from "react";
@@ -200,9 +201,18 @@ export function Header() {
             className={`flex items-center shrink-0 z-50 ml-2 sm:ml-4 lg:ml-6 2xl:ml-8 transition-all duration-300 ${isScrolled ? "mt-0" : "mt-4"
               }`}
           >
-            <img
+            {/* next/image, not a raw <img>: the source is a 540x600 PNG that
+                was shipping at 336KB to fill a 96px-tall slot. `priority`
+                because it is above the fold on every page, and deliberately
+                no `sizes` — on a fixed-width image that switches Next to the
+                full responsive srcset and the browser picked the 3840px
+                variant. Width/height alone gets a tight 1x/2x srcset. */}
+            <Image
               src="/auseducenter_logo.png"
-              alt="AEC Logo"
+              alt="Australian Education Centre"
+              width={216}
+              height={240}
+              priority
               className={`w-auto object-contain transition-all duration-300 ${isScrolled ? "h-12 md:h-14" : "h-20 md:h-24"
                 }`}
             />
@@ -325,6 +335,8 @@ export function Header() {
               {/* Mobile Hamburger Toggle */}
               <button
                 onClick={() => setIsMobileOpen(!isMobileOpen)}
+                aria-label={isMobileOpen ? "Close navigation menu" : "Open navigation menu"}
+                aria-expanded={isMobileOpen}
                 className="p-2 text-slate-800 bg-white border-[2px] border-slate-900 shadow-[4px_4px_0px_rgba(15,23,42,1)] rounded-full hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-[2px_2px_0px_rgba(15,23,42,1)] transition-all"
               >
                 {isMobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}

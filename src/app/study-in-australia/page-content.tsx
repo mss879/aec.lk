@@ -33,7 +33,8 @@ export function StudyInAustraliaContent() {
           <Image 
             src="/australia_hero.png" 
             alt="Australia Premium Campus" 
-            fill 
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px" 
             className="object-cover opacity-15 scale-105"
             priority
           />
@@ -159,7 +160,7 @@ export function StudyInAustraliaContent() {
             {/* Why Study Bento Item */}
             <Link href="/study-in-australia/why-study" className="group block bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden h-[340px] flex flex-col justify-between">
               <div className="absolute inset-0 z-0">
-                <Image src="/why_landscape.png" alt="Why Australia" fill className="object-cover opacity-10 group-hover:scale-105 transition-transform duration-700" />
+                <Image src="/why_landscape.png" alt="Why Australia" fill sizes="(max-width: 1024px) 100vw, 420px" className="object-cover opacity-10 group-hover:scale-105 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-b from-white via-white/80 to-transparent" />
               </div>
               <div className="relative z-10">
@@ -178,7 +179,7 @@ export function StudyInAustraliaContent() {
             {/* Course Finder Bento Item */}
             <Link href="/study-in-australia/course-finder" className="group block bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden h-[340px] flex flex-col justify-between">
               <div className="absolute inset-0 z-0">
-                <Image src="/why_card1.png" alt="Course Finder" fill className="object-cover opacity-10 group-hover:scale-105 transition-transform duration-700" />
+                <Image src="/why_card1.png" alt="Course Finder" fill sizes="200px" className="object-cover opacity-10 group-hover:scale-105 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-b from-white via-white/80 to-transparent" />
               </div>
               <div className="relative z-10">
@@ -196,7 +197,7 @@ export function StudyInAustraliaContent() {
             {/* Short Courses Bento Item */}
             <Link href="/study-in-australia/short-courses" className="group block bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden h-[340px] flex flex-col justify-between">
               <div className="absolute inset-0 z-0">
-                <Image src="/why_card2.png" alt="Short Courses" fill className="object-cover opacity-10 group-hover:scale-105 transition-transform duration-700" />
+                <Image src="/why_card2.png" alt="Short Courses" fill sizes="200px" className="object-cover opacity-10 group-hover:scale-105 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-b from-white via-white/80 to-transparent" />
               </div>
               <div className="relative z-10">
@@ -214,7 +215,7 @@ export function StudyInAustraliaContent() {
             {/* Scholarships Bento Item */}
             <Link href="/study-in-australia/scholarships" className="group block bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden h-[340px] flex flex-col justify-between">
               <div className="absolute inset-0 z-0">
-                <Image src="/why_card3.png" alt="Scholarships" fill className="object-cover opacity-10 group-hover:scale-105 transition-transform duration-700" />
+                <Image src="/why_card3.png" alt="Scholarships" fill sizes="200px" className="object-cover opacity-10 group-hover:scale-105 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-b from-white via-white/80 to-transparent" />
               </div>
               <div className="relative z-10">
@@ -232,7 +233,7 @@ export function StudyInAustraliaContent() {
             {/* Universities List Bento Item */}
             <Link href="/study-in-australia/universities-colleges" className="group block bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden h-[340px] flex flex-col justify-between">
               <div className="absolute inset-0 z-0">
-                <Image src="/dest_australia.png" alt="Universities" fill className="object-cover opacity-10 group-hover:scale-105 transition-transform duration-700" />
+                <Image src="/dest_australia.png" alt="Universities" fill sizes="(max-width: 1024px) 100vw, 640px" className="object-cover opacity-10 group-hover:scale-105 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-b from-white via-white/80 to-transparent" />
               </div>
               <div className="relative z-10">
@@ -250,7 +251,7 @@ export function StudyInAustraliaContent() {
             {/* FAQs Bento Item */}
             <Link href="/study-in-australia/faqs" className="group block bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden h-[340px] flex flex-col justify-between">
               <div className="absolute inset-0 z-0">
-                <Image src="/why_settlement.png" alt="FAQs" fill className="object-cover opacity-10 group-hover:scale-105 transition-transform duration-700" />
+                <Image src="/why_settlement.png" alt="FAQs" fill sizes="(max-width: 768px) 100vw, 420px" className="object-cover opacity-10 group-hover:scale-105 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-b from-white via-white/80 to-transparent" />
               </div>
               <div className="relative z-10">
@@ -289,7 +290,8 @@ export function StudyInAustraliaContent() {
                 <Image 
                   src="/female_consultant.png" 
                   alt="AEC Placement Support" 
-                  fill 
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px" 
                   className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
@@ -355,7 +357,8 @@ export function StudyInAustraliaContent() {
             <Image 
               src="/university_tours.png" 
               alt="University Exploration Tours" 
-              fill 
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px" 
               className="object-cover group-hover:scale-105 transition-transform duration-1000"
             />
             <div className="absolute inset-0 bg-black/25 group-hover:bg-black/20 transition-colors" />

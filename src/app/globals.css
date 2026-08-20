@@ -69,3 +69,27 @@ h6 {
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+/* -----------------------------------------------------------------------------
+   Hero entrance.
+
+   The hero headline and paragraph are the LCP element on most pages, so they
+   must be painted and opaque in the server HTML — an element at opacity 0 is
+   not an LCP candidate, and waiting for JS to fade it in delayed LCP by well
+   over a second. This animates the transform only, starting from a visible
+   state, so the first paint already counts.
+   ----------------------------------------------------------------------------- */
+@keyframes hero-rise {
+  from { transform: translateY(14px); }
+  to   { transform: translateY(0); }
+}
+
+.hero-rise {
+  animation: hero-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-rise-2 { animation-delay: 0.08s; }
+.hero-rise-3 { animation-delay: 0.16s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-rise { animation: none; }
+}

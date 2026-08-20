@@ -3,20 +3,50 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+/** Only the first page view in a tab gets the splash. */
+const SEEN_KEY = "aec-preloader-seen";
+
+/**
+ * How long the splash holds before it starts leaving.
+ *
+ * This used to be 2200ms plus an 800ms exit — three seconds of white screen on
+ * every cold load, which is dead weight in every field metric Google collects.
+ * 900ms is long enough to read the mark and short enough not to be the reason
+ * the page feels slow.
+ */
+const HOLD_MS = 900;
+
 export function Preloader() {
+  // Rendered on the server too, so it must start true and be dismissed on the
+  // client — starting false would flash the page and then cover it.
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Prevent scrolling while loading
+    // Only lock scrolling while the splash is actually up.
     document.body.style.overflow = "hidden";
-    
-    const timer = setTimeout(() => {
+
+    let alreadySeen = false;
+    try {
+      alreadySeen = window.sessionStorage.getItem(SEEN_KEY) === "1";
+    } catch {
+      // Private browsing can refuse storage; showing the splash is the safe
+      // fallback.
+    }
+
+    // Dismiss on the next tick either way, so the state update is never made
+    // synchronously inside the effect body.
+    const timer = window.setTimeout(() => {
       setIsLoading(false);
       document.body.style.overflow = "unset";
-    }, 2200);
+      try {
+        window.sessionStorage.setItem(SEEN_KEY, "1");
+      } catch {
+        // As above — not worth surfacing.
+      }
+    }, alreadySeen ? 0 : HOLD_MS);
 
     return () => {
-      clearTimeout(timer);
+      window.clearTimeout(timer);
       document.body.style.overflow = "unset";
     };
   }, []);
@@ -28,7 +58,7 @@ export function Preloader() {
           key="preloader"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, y: "-100%" }}
-          transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+          transition={{ duration: 0.45, ease: [0.76, 0, 0.24, 1] }}
           className="fixed inset-0 z-[99999] bg-white flex flex-col items-center justify-center overflow-hidden"
         >
           <div className="flex flex-col items-center justify-center">
