@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { Headset, MessageCircle, Send, Sparkles, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -23,7 +22,7 @@ type Message = {
 const GREETING: Message = {
   role: "assistant",
   content:
-    "Ayubowan! 👋 I'm **AEC Assist**. Ask me anything about studying in Australia or 20+ other destinations — courses, costs, visas, scholarships, or bringing your family along.",
+    "Ayubowan! 👋 I'm the **AI agent for Australian Education Centre**. Ask me anything about studying in Australia or 20+ other destinations — courses, costs, visas, scholarships, or bringing your family along.",
 };
 
 const SESSION_KEY = "aec-assist-session";
@@ -363,7 +362,7 @@ export function AiChatWidget() {
                 <p className="truncate text-[11px] font-medium text-blue-100">
                   {handedOver
                     ? "You're chatting with our team"
-                    : "Study abroad questions, answered instantly"}
+                    : "AI agent for Australian Education Centre"}
                 </p>
               </div>
               <button
@@ -484,10 +483,15 @@ export function AiChatWidget() {
                 </button>
               </div>
               <p className="mt-2 text-center text-[10px] text-slate-400">
-                AI assistant — for personal advice{" "}
-                <Link href="/contact" className="font-bold text-[#124b8d] hover:underline">
-                  book a free consultation
-                </Link>
+                Powered by{" "}
+                <a
+                  href="https://www.arcai.agency"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-[#124b8d] hover:underline"
+                >
+                  ARC AI
+                </a>
               </p>
             </form>
           </motion.div>
