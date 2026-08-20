@@ -1,6 +1,17 @@
 import { requireAdmin } from "@/lib/supabase/auth";
 import { AdminSidebar } from "@/components/admin/sidebar";
 
+import type { Metadata } from "next";
+
+/**
+ * robots.txt asks crawlers to stay out of /admin, but that is only a request
+ * and only covers crawling. This header keeps the back office out of the index
+ * even if a URL is discovered some other way.
+ */
+export const metadata: Metadata = {
+  robots: { index: false, follow: false, nocache: true },
+};
+
 /**
  * Shell for every authenticated back-office page.
  *

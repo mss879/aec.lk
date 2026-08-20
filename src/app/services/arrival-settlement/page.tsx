@@ -1,11 +1,20 @@
-"use client";
-
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site";
+import { BreadcrumbSchema, ServiceSchema } from "@/components/seo/json-ld";
 import { PageHero } from "@/components/ui/page-hero";
 import { Button } from "@/components/ui/button";
 import { 
   Plane, Home, Landmark, Briefcase, Compass, ShieldCheck, ChevronRight 
 } from "lucide-react";
 import Link from "next/link";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Arrival & Settlement Services",
+  description:
+    "On-shore support in Australia: airport pickup, accommodation, bank accounts, tax file numbers and the practical help that makes settling in easy.",
+  path: "/services/arrival-settlement",
+});
+
 
 const arrivalServices = [
   { title: "Airport Reception", desc: "Welcome briefing and safe airport transfers upon landing in selected major cities.", icon: <Plane className="w-6 h-6 text-[#124b8d]" /> },
@@ -19,11 +28,19 @@ const arrivalServices = [
 export default function ArrivalSettlement() {
   return (
     <div className="flex flex-col w-full bg-white text-slate-900">
+      <BreadcrumbSchema items={[
+          { name: "Our Services", path: "/services" },
+          { name: "Arrival & Settlement Services", path: "/services/arrival-settlement" },
+        ]} />
+      <ServiceSchema
+        name="Arrival & Settlement Services"
+        description="On-shore support in Australia: airport pickup, accommodation, bank accounts, tax file numbers and the practical help that makes settling in easy."
+        path="/services/arrival-settlement"
+      />
       <PageHero 
         title="Arrival & Settlement Services" 
         subtitle="Complete on-shore support to help you adapt and succeed in Australia."
         breadcrumb="Services / Arrival & Settlement"
-        bgImage="https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?q=80&w=2940&auto=format&fit=crop"
       />
 
       {/* Services Grid */}

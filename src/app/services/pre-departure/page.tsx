@@ -1,9 +1,18 @@
-"use client";
-
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site";
+import { BreadcrumbSchema, ServiceSchema } from "@/components/seo/json-ld";
 import { PageHero } from "@/components/ui/page-hero";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Pre-Departure Services",
+  description:
+    "Visa briefing, accommodation, airport pickup, forex and packing guidance — complete preparation before you leave Sri Lanka or the UAE.",
+  path: "/services/pre-departure",
+});
+
 
 const preDepartureServices = [
   { title: "FREE Qualified Counseling", desc: "Our certified PIER counselors help you select the exact professional course, location, and university to match your scorecard." },
@@ -19,11 +28,19 @@ const preDepartureServices = [
 export default function PreDeparture() {
   return (
     <div className="flex flex-col w-full bg-white text-slate-900">
+      <BreadcrumbSchema items={[
+          { name: "Our Services", path: "/services" },
+          { name: "Pre-Departure Services", path: "/services/pre-departure" },
+        ]} />
+      <ServiceSchema
+        name="Pre-Departure Services"
+        description="Visa briefing, accommodation, airport pickup, forex and packing guidance — complete preparation before you leave Sri Lanka or the UAE."
+        path="/services/pre-departure"
+      />
       <PageHero 
         title="Pre-Departure Services" 
         subtitle="Complete, expert preparation before you leave Sri Lanka or the UAE."
         breadcrumb="Services / Pre-Departure"
-        bgImage="https://images.unsplash.com/photo-1542037104857-ffbb0b9155fb?q=80&w=2940&auto=format&fit=crop"
       />
 
       {/* Services Grid */}

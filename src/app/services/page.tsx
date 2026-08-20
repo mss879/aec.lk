@@ -1,5 +1,6 @@
-"use client";
-
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site";
+import { BreadcrumbSchema } from "@/components/seo/json-ld";
 import { PageHero } from "@/components/ui/page-hero";
 import { Button } from "@/components/ui/button";
 import { 
@@ -7,6 +8,14 @@ import {
   HeartHandshake, ArrowUpRight, ChevronRight 
 } from "lucide-react";
 import Link from "next/link";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Our Services",
+  description:
+    "End-to-end student support from AEC: course counselling, applications, visa lodgement, pre-departure briefing, arrival settlement and post-study careers.",
+  path: "/services",
+});
+
 
 const serviceCards = [
   {
@@ -50,11 +59,13 @@ const serviceCards = [
 export default function ServicesPortal() {
   return (
     <div className="flex flex-col w-full bg-white text-slate-900">
+      <BreadcrumbSchema items={[
+          { name: "Our Services", path: "/services" },
+        ]} />
       <PageHero 
         title="Complete Services" 
         subtitle="Supporting you seamlessly from your first discovery session to your final settlement."
         breadcrumb="Services"
-        bgImage="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2940&auto=format&fit=crop"
       />
 
       {/* Directory Bento Grid */}

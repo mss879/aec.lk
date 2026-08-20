@@ -1,11 +1,20 @@
-"use client";
-
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site";
+import { BreadcrumbSchema } from "@/components/seo/json-ld";
 import { PageHero } from "@/components/ui/page-hero";
 import { Button } from "@/components/ui/button";
 import { 
   GraduationCap, Calendar, Compass, ChevronRight, CheckCircle2 
 } from "lucide-react";
 import Link from "next/link";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Age-Appropriate School Entry Points",
+  description:
+    "A year-by-year guide to Australian school entry ages, academic divisions and the best intake year for your child.",
+  path: "/australian-school-sector/entry-points",
+});
+
 
 const entryPoints = [
   {
@@ -43,11 +52,14 @@ const entryPoints = [
 export default function EntryPoints() {
   return (
     <div className="flex flex-col w-full bg-white text-slate-900">
+      <BreadcrumbSchema items={[
+          { name: "Australian Schools", path: "/australian-school-sector" },
+          { name: "Age-Appropriate School Entry Points", path: "/australian-school-sector/entry-points" },
+        ]} />
       <PageHero 
         title="Age-Appropriate Entry Points" 
         subtitle="Visual guide to key school entry years, academic divisions, and age guidelines."
         breadcrumb="Schools / Entry Points"
-        bgImage="https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=2940&auto=format&fit=crop"
       />
 
       {/* Grid of entry points */}

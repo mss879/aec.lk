@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site";
+import { BreadcrumbSchema } from "@/components/seo/json-ld";
 import Link from "next/link";
 import { PageHero } from "@/components/ui/page-hero";
 import { Card, CardContent } from "@/components/ui/card";
@@ -6,17 +8,18 @@ import { Button } from "@/components/ui/button";
 import { MapPin, Phone, Mail, Clock, ArrowUpRight, Star } from "lucide-react";
 import { ConsultationForm } from "@/app/contact/consultation-form";
 
-export const metadata: Metadata = {
-  title: "Contact Us | Australian Education Centre",
+export const metadata: Metadata = pageMetadata({
+  title: "Contact Us",
   description:
     "Book a free consultation with Australian Education Centre. Offices in Colombo, Melbourne, Adelaide and Dubai.",
-};
+  path: "/contact",
+});
 
 const offices = [
   {
     city: "Sri Lanka Office - Head Office",
     name: "Australian Education Centre (Pvt) Ltd",
-    address: "No. 421-1/1, Thimbirigasyaya Road, Colombo 05, Sri Lanka",
+    address: "No. 421/1/1, Thimbirigasyaya Road, Colombo 05, Sri Lanka",
     phone: "+94 11 5500100",
     mobiles: ["+94 77 395 0448", "+94 77 107 6990", "+94 77 107 6991"],
     email: "edu@multinational.com.au",
@@ -55,11 +58,11 @@ const offices = [
 export default function Contact() {
   return (
     <div className="flex flex-col w-full bg-white text-slate-900">
+      <BreadcrumbSchema items={[{ name: "Contact Us", path: "/contact" }]} />
       <PageHero
         title="Get in Touch Today"
         subtitle="Start your international education journey with Australia&apos;s trusted education consultancy."
         breadcrumb="Contact Us"
-        bgImage="https://images.unsplash.com/photo-1516387938699-a93567ec168e?q=80&w=2940&auto=format&fit=crop"
       />
 
       {/* Quick Contact Portal bar */}

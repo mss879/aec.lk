@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site";
+import { BreadcrumbSchema } from "@/components/seo/json-ld";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Newspaper } from "lucide-react";
@@ -8,11 +10,12 @@ import { createClient } from "@/lib/supabase/server";
 import { formatPostDate, formatReadingTime } from "@/lib/blog";
 import { cn } from "@/lib/utils";
 
-export const metadata: Metadata = {
-  title: "Blog | Australian Education Centre",
+export const metadata: Metadata = pageMetadata({
+  title: "Blog & Insights",
   description:
     "Guidance on studying in Australia — visas, scholarships, applications and student life — from the counsellors at Australian Education Centre.",
-};
+  path: "/blog",
+});
 
 function readCategory(value: string | string[] | undefined): string | null {
   const raw = Array.isArray(value) ? value[0] : value;
@@ -82,11 +85,11 @@ export default async function BlogIndexPage({
 
   return (
     <div className="flex w-full flex-col bg-white text-slate-900">
+      <BreadcrumbSchema items={[{ name: "Blog & Insights", path: "/blog" }]} />
       <PageHero
         title="Insights for Your Australian Journey"
         subtitle="Practical guidance on visas, scholarships, applications and settling in — written by the counsellors who do this every day."
         breadcrumb="Blog"
-        bgImage="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2940&auto=format&fit=crop"
       />
 
       <section className="border-b border-slate-200 bg-white py-24">
@@ -216,7 +219,7 @@ export default async function BlogIndexPage({
             Have a question the blog did not answer?
           </h2>
           <p className="mx-auto max-w-2xl text-lg font-medium leading-relaxed text-slate-500">
-            Our PIER-certified counsellors and MARA-registered migration agents
+            Our PIER-certified counsellors and MARA registered agents
             will assess your profile and map the pathway that fits you.
           </p>
           <div className="pt-4">

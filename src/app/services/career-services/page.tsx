@@ -1,9 +1,18 @@
-"use client";
-
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site";
+import { BreadcrumbSchema, ServiceSchema } from "@/components/seo/json-ld";
 import { PageHero } from "@/components/ui/page-hero";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Post-Study Career Services",
+  description:
+    "Resume building, interview coaching and employer connections to help you move from international student to working professional in Australia.",
+  path: "/services/career-services",
+});
+
 
 const careerServicesList = [
   { title: "Graduate Visa Subclass 485", desc: "Expert, student support visa processing to secure your temporary graduate post-study work rights." },
@@ -19,11 +28,19 @@ const careerServicesList = [
 export default function CareerServices() {
   return (
     <div className="flex flex-col w-full bg-white text-slate-900">
+      <BreadcrumbSchema items={[
+          { name: "Our Services", path: "/services" },
+          { name: "Post-Study Career Services", path: "/services/career-services" },
+        ]} />
+      <ServiceSchema
+        name="Post-Study Career Services"
+        description="Resume building, interview coaching and employer connections to help you move from international student to working professional in Australia."
+        path="/services/career-services"
+      />
       <PageHero 
         title="Post-Study Career Services" 
         subtitle="Meticulous support to help you transition from international student to global professional."
         breadcrumb="Services / Career Support"
-        bgImage="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2940&auto=format&fit=crop"
       />
 
       {/* Services Grid */}

@@ -91,7 +91,6 @@ const navLinks: NavLink[] = [
         title: "Destinations",
         links: [
           { name: "Country Pages", href: "/study-worldwide#countries" },
-          { name: "How to Choose the Right Country", href: "/study-worldwide#choose" },
           { name: "Compare Destinations Tool", href: "/study-worldwide#compare" },
           { name: "MBBS in Belarus & Georgia", href: "/study-worldwide#mbbs" },
           { name: "FAQs", href: "/study-worldwide#faqs" },
@@ -148,13 +147,28 @@ export function Header() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [openMobileSection, setOpenMobileSection] = useState<string | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
 
+  // The bar floats transparently over the hero, then pins itself to the top and
+  // shrinks once the page starts moving so it costs less vertical space.
   useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Close every menu when the route changes. React's documented way to react
+  // to a prop/derived change is to adjust state during render rather than in an
+  // effect, which also avoids the extra render pass an effect would cost.
+  const [lastPathname, setLastPathname] = useState(pathname);
+  if (lastPathname !== pathname) {
+    setLastPathname(pathname);
     setIsMobileOpen(false);
     setActiveDropdown(null);
     setOpenMobileSection(null);
-  }, [pathname]);
+  }
 
   useEffect(() => {
     if (isMobileOpen) {
@@ -167,21 +181,39 @@ export function Header() {
 
   return (
     <>
-      <header className="absolute top-0 left-0 w-full z-50 bg-transparent">
-        <div className="w-full px-4 lg:px-6 xl:px-8 h-28 flex items-center justify-between">
+      <header
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled
+            ? "bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-[0_2px_20px_rgba(15,23,42,0.08)]"
+            : "bg-transparent"
+          }`}
+      >
+        <div
+          className={`w-full px-4 lg:px-6 xl:px-8 flex items-center justify-between transition-all duration-300 ${isScrolled ? "h-[72px]" : "h-28"
+            }`}
+        >
 
           {/* Logo */}
-          <Link href="/" className="flex items-center shrink-0 z-50 mt-4 ml-4 sm:ml-6 lg:ml-8">
+          <Link
+            href="/"
+            className={`flex items-center shrink-0 z-50 ml-2 sm:ml-4 lg:ml-6 2xl:ml-8 transition-all duration-300 ${isScrolled ? "mt-0" : "mt-4"
+              }`}
+          >
             <img
               src="/auseducenter_logo.png"
               alt="AEC Logo"
-              className="h-20 md:h-24 w-auto object-contain"
+              className={`w-auto object-contain transition-all duration-300 ${isScrolled ? "h-12 md:h-14" : "h-20 md:h-24"
+                }`}
             />
           </Link>
 
           {/* Desktop Main Nav & Right Side CTA */}
           <div className="flex flex-1 justify-end items-center">
-            <nav className="hidden xl:flex items-center bg-white rounded-2xl pl-4 pr-2 py-2 shadow-[4px_4px_0px_rgba(15,23,42,1)] border-[2px] border-slate-900">
+            <nav
+              className={`hidden xl:flex items-center bg-white rounded-2xl pl-2 2xl:pl-4 pr-2 border-[2px] border-slate-900 transition-all duration-300 ${isScrolled
+                  ? "py-1.5 shadow-[3px_3px_0px_rgba(15,23,42,1)]"
+                  : "py-2 shadow-[4px_4px_0px_rgba(15,23,42,1)]"
+                }`}
+            >
               {navLinks.map((link) => {
                 const isActive = activeDropdown === link.name;
                 return (
@@ -193,7 +225,10 @@ export function Header() {
                   >
                     <Link
                       href={link.href}
-                      className={`flex items-center gap-1.5 text-[14px] font-bold transition-colors px-4 py-2.5 rounded-xl ${isActive && link.megaMenu
+                      className={`flex items-center gap-1 2xl:gap-1.5 font-bold transition-all duration-300 rounded-xl ${isScrolled
+                          ? "text-[13px] px-2.5 2xl:px-3.5 py-2"
+                          : "text-[14px] px-3 2xl:px-4 py-2.5"
+                        } ${isActive && link.megaMenu
                           ? 'bg-slate-900 text-white'
                           : 'text-slate-800 hover:text-blue-600'
                         }`}
@@ -207,7 +242,7 @@ export function Header() {
                     {/* Desktop Mega Menu Dropdown */}
                     <AnimatePresence>
                       {link.megaMenu && isActive && (
-                        <div className="absolute top-[80px] left-0 w-full flex justify-center pt-6 z-50 px-4 pointer-events-none">
+                        <div className={`absolute left-0 w-full flex justify-center pt-4 z-50 px-4 pointer-events-none ${isScrolled ? "top-[52px]" : "top-[84px]"}`}>
                           <motion.div
                             initial={{ opacity: 0, y: 10, scale: 0.98 }}
                             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -216,7 +251,7 @@ export function Header() {
                             className="pointer-events-auto relative w-full max-w-5xl"
                           >
                             {/* Invisible bridge for hover */}
-                            <div className="absolute -top-10 left-0 right-0 h-10 bg-transparent" />
+                            <div className="absolute -top-3 left-0 right-0 h-3 bg-transparent" />
 
                             <div className="bg-white border border-slate-100 shadow-2xl rounded-[2rem] overflow-hidden p-8">
                               <div className="grid grid-cols-4 gap-8">
@@ -277,7 +312,7 @@ export function Header() {
 
               {/* Integrated Apply Now Button */}
               <div className="pl-2 ml-2 border-l-[2px] border-slate-200">
-                <Link href="/contact" className="flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white rounded-xl px-6 py-2.5 text-[14px] font-black tracking-widest uppercase transition-colors">
+                <Link href="/contact" className={`flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-black tracking-widest uppercase transition-all duration-300 ${isScrolled ? "px-4 2xl:px-5 py-2 text-[13px]" : "px-5 2xl:px-6 py-2.5 text-[14px]"}`}>
                   Apply Now
                 </Link>
               </div>
@@ -304,7 +339,10 @@ export function Header() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="xl:hidden fixed inset-0 top-24 z-40 bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl border-t border-slate-100 dark:border-slate-800 flex flex-col h-[calc(100vh-96px)]"
+            className={`xl:hidden fixed inset-0 z-40 bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl border-t border-slate-100 dark:border-slate-800 flex flex-col ${isScrolled
+                ? "top-[72px] h-[calc(100vh-72px)]"
+                : "top-28 h-[calc(100vh-112px)]"
+              }`}
           >
             <div className="flex-1 overflow-y-auto p-6">
               <nav className="flex flex-col gap-4">

@@ -1,5 +1,7 @@
 import { cache } from "react";
 import type { Metadata } from "next";
+import { siteName, siteUrl } from "@/lib/site";
+import { BreadcrumbSchema } from "@/components/seo/json-ld";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -41,7 +43,7 @@ export async function generateMetadata({
   const post = await getPost(slug);
 
   if (!post) {
-    return { title: "Post not found | Australian Education Centre" };
+    return { title: "Post not found", robots: { index: false } };
   }
 
   const title = post.seo_title?.trim() || post.title;
@@ -51,17 +53,27 @@ export async function generateMetadata({
     `Read “${post.title}” on the Australian Education Centre blog.`;
 
   return {
-    title: `${title} | Australian Education Centre`,
+    title,
     description,
+    alternates: { canonical: `${siteUrl}/blog/${post.slug}` },
     openGraph: {
       type: "article",
       title,
       description,
+      url: `${siteUrl}/blog/${post.slug}`,
+      siteName,
       publishedTime: post.published_at ?? undefined,
+      modifiedTime: post.updated_at ?? undefined,
       authors: post.author_name ? [post.author_name] : undefined,
       images: post.cover_image_url
         ? [{ url: post.cover_image_url, alt: post.title }]
-        : undefined,
+        : [{ url: "/auseducenter_logo.png", alt: siteName }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: post.cover_image_url ? [post.cover_image_url] : ["/auseducenter_logo.png"],
     },
   };
 }
@@ -78,8 +90,34 @@ export default async function BlogPostPage({
 
   const blocks = renderPostContent(post.content);
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt ?? undefined,
+    image: post.cover_image_url ?? `${siteUrl}/auseducenter_logo.png`,
+    datePublished: post.published_at ?? undefined,
+    dateModified: post.updated_at ?? post.published_at ?? undefined,
+    author: post.author_name
+      ? { "@type": "Person", name: post.author_name }
+      : { "@id": `${siteUrl}/#organization` },
+    publisher: { "@id": `${siteUrl}/#organization` },
+    mainEntityOfPage: { "@type": "WebPage", "@id": `${siteUrl}/blog/${post.slug}` },
+    articleSection: post.category ?? undefined,
+  };
+
   return (
     <article className="flex w-full flex-col bg-white text-slate-900">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <BreadcrumbSchema
+        items={[
+          { name: "Blog", path: "/blog" },
+          { name: post.title, path: `/blog/${post.slug}` },
+        ]}
+      />
       {/* Masthead */}
       <header className="border-b border-slate-100 bg-white pb-12 pt-32">
         <div className="container mx-auto max-w-4xl px-4">

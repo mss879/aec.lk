@@ -1,11 +1,20 @@
-"use client";
-
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site";
+import { BreadcrumbSchema } from "@/components/seo/json-ld";
 import { PageHero } from "@/components/ui/page-hero";
 import { Button } from "@/components/ui/button";
 import { 
   CheckCircle2, School, Landmark, GraduationCap, ChevronRight 
 } from "lucide-react";
 import Link from "next/link";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Australian School Types & Programs",
+  description:
+    "Compare private, Catholic and public schools in Australia — curriculum, fees, boarding and support — to choose the right environment for your child.",
+  path: "/australian-school-sector/school-types",
+});
+
 
 const schoolTypes = [
   {
@@ -55,11 +64,14 @@ const schoolTypes = [
 export default function SchoolTypes() {
   return (
     <div className="flex flex-col w-full bg-white text-slate-900">
+      <BreadcrumbSchema items={[
+          { name: "Australian Schools", path: "/australian-school-sector" },
+          { name: "Australian School Types & Programs", path: "/australian-school-sector/school-types" },
+        ]} />
       <PageHero 
         title="School Types & Programs" 
         subtitle="Compare Private, Catholic, and Public schools to choose the best environment."
         breadcrumb="Schools / Types & Programs"
-        bgImage="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=2940&auto=format&fit=crop"
       />
 
       {/* Grid of types */}

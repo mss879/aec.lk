@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site";
+import { BreadcrumbSchema } from "@/components/seo/json-ld";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -13,11 +15,12 @@ import { createClient } from "@/lib/supabase/server";
 import { cn } from "@/lib/utils";
 import type { Testimonial } from "@/lib/supabase/database.types";
 
-export const metadata: Metadata = {
-  title: "Student Success Stories | Australian Education Centre",
+export const metadata: Metadata = pageMetadata({
+  title: "Student Success Stories",
   description:
     "Real stories from students who studied in Australia with the Australian Education Centre — university placements, visas, and settling in, told in their own words.",
-};
+  path: "/testimonials",
+});
 
 // --- Small presentational pieces ------------------------------------------
 
@@ -224,11 +227,14 @@ export default async function TestimonialsPage() {
 
   return (
     <div className="flex flex-col w-full bg-white text-slate-900">
+      <BreadcrumbSchema items={[{ name: "Student Success Stories", path: "/testimonials" }]} />
+      {/* Deliberately no Review/AggregateRating markup: Google treats reviews an
+          organisation publishes about itself as self-serving and excludes them
+          from rich results. The testimonials still render for readers. */}
       <PageHero
         title="Student Success Stories"
         subtitle="Two decades of placements, visas and arrivals — told by the students who lived them."
         breadcrumb="Testimonials"
-        bgImage="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2940&auto=format&fit=crop"
       />
 
       {testimonials.length > 0 && (
@@ -358,7 +364,7 @@ export default async function TestimonialsPage() {
           </h2>
           <p className="text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed font-medium">
             Every story on this page began with a free consultation. Our
-            qualified counsellors and MARA migration agents will assess your
+            qualified counsellors and MARA registered agents will assess your
             profile and map the pathway that fits.
           </p>
 

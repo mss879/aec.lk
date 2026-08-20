@@ -1,5 +1,6 @@
-"use client";
-
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site";
+import { BreadcrumbSchema } from "@/components/seo/json-ld";
 import { PageHero } from "@/components/ui/page-hero";
 import { Button } from "@/components/ui/button";
 import { 
@@ -7,14 +8,25 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
+export const metadata: Metadata = pageMetadata({
+  title: "School Accommodation & Welfare",
+  description:
+    "Homestay, school boarding and parent guardian arrangements for international school students in Australia, plus welfare and duty-of-care requirements.",
+  path: "/australian-school-sector/accommodation",
+});
+
+
 export default function SchoolAccommodation() {
   return (
     <div className="flex flex-col w-full bg-white text-slate-900">
+      <BreadcrumbSchema items={[
+          { name: "Australian Schools", path: "/australian-school-sector" },
+          { name: "School Accommodation & Welfare", path: "/australian-school-sector/accommodation" },
+        ]} />
       <PageHero 
         title="Accommodation & Welfare" 
         subtitle="Explore Homestay, School Boarding, and Parent Guardian arrangements."
         breadcrumb="Schools / Accommodation"
-        bgImage="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2940&auto=format&fit=crop"
       />
 
       {/* Grid of accommodations */}

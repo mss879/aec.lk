@@ -1,11 +1,20 @@
-"use client";
-
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site";
+import { BreadcrumbSchema, ServiceSchema } from "@/components/seo/json-ld";
 import { PageHero } from "@/components/ui/page-hero";
 import { Button } from "@/components/ui/button";
 import { 
   BookOpen, Headphones, Book, MessageSquare, CheckCircle2, ChevronRight 
 } from "lucide-react";
 import Link from "next/link";
+
+export const metadata: Metadata = pageMetadata({
+  title: "IELTS & PTE Preparation",
+  description:
+    "Reach the English score your visa and course require, with expert coaching partners and test strategy guidance from AEC.",
+  path: "/services/ielts-pte",
+});
+
 
 const courseOptions = [
   { title: "Intensive Crash Course", duration: "4 Weeks", desc: "Best for students who need quick results and plan to sit for exams immediately. Fast-paced, high-focus exam strategy drills.", label: "Urgent Results" },
@@ -24,11 +33,19 @@ const moduleCoverage = [
 export default function IeltsPte() {
   return (
     <div className="flex flex-col w-full bg-white text-slate-900">
+      <BreadcrumbSchema items={[
+          { name: "Our Services", path: "/services" },
+          { name: "IELTS & PTE Preparation", path: "/services/ielts-pte" },
+        ]} />
+      <ServiceSchema
+        name="IELTS & PTE Preparation"
+        description="Reach the English score your visa and course require, with expert coaching partners and test strategy guidance from AEC."
+        path="/services/ielts-pte"
+      />
       <PageHero 
         title="IELTS & PTE Preparation" 
         subtitle="Achieve your required English scorecard with confidence through expert coaching partners."
         breadcrumb="Services / IELTS & PTE"
-        bgImage="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=2940&auto=format&fit=crop"
       />
 
       {/* Intro Metrics */}

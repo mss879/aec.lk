@@ -7,7 +7,6 @@ interface PageHeroProps {
   title: string;
   subtitle?: string;
   breadcrumb: string;
-  bgImage?: string;
 }
 
 const fadeIn = {
@@ -23,7 +22,7 @@ const staggerContainer = {
   }
 };
 
-export function PageHero({ title, subtitle, breadcrumb, bgImage = "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?q=80&w=2940&auto=format&fit=crop" }: PageHeroProps) {
+export function PageHero({ title, subtitle, breadcrumb }: PageHeroProps) {
   return (
     <section className="relative w-full min-h-[40vh] md:min-h-[45vh] flex items-center justify-center overflow-hidden bg-white pt-24 pb-12 border-b border-slate-100">
       {/* Decorative Grid Background matching homepage hero */}

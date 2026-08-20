@@ -1,9 +1,18 @@
-"use client";
-
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site";
+import { BreadcrumbSchema, ServiceSchema } from "@/components/seo/json-ld";
 import { PageHero } from "@/components/ui/page-hero";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, ChevronRight } from "lucide-react";
 import Link from "next/link";
+
+export const metadata: Metadata = pageMetadata({
+  title: "Partner & Family Visa Services",
+  description:
+    "Specialist support for bringing spouses, children and guardians to Australia — documentation, evidence and lodgement handled by registered advisers.",
+  path: "/services/partner-family",
+});
+
 
 const visaCategories = [
   { title: "Partner or Spouse Visas", desc: "For married or registered de facto spouses seeking to join students in Australia initially or as subsequent entrants." },
@@ -16,11 +25,19 @@ const visaCategories = [
 export default function PartnerFamilyVisaServices() {
   return (
     <div className="flex flex-col w-full bg-white text-slate-900">
+      <BreadcrumbSchema items={[
+          { name: "Our Services", path: "/services" },
+          { name: "Partner & Family Visa Services", path: "/services/partner-family" },
+        ]} />
+      <ServiceSchema
+        name="Partner & Family Visa Services"
+        description="Specialist support for bringing spouses, children and guardians to Australia — documentation, evidence and lodgement handled by registered advisers."
+        path="/services/partner-family"
+      />
       <PageHero 
         title="Partner & Family Visa Services" 
         subtitle="Stay connected. AEC provides specialized support bringing spouses, children, and guardians to Australia."
         breadcrumb="Services / Family Visas"
-        bgImage="https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=2940&auto=format&fit=crop"
       />
 
       {/* Intro Metrics */}

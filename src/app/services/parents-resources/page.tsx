@@ -1,9 +1,18 @@
-"use client";
-
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site";
+import { BreadcrumbSchema, ServiceSchema } from "@/components/seo/json-ld";
 import { PageHero } from "@/components/ui/page-hero";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
+
+export const metadata: Metadata = pageMetadata({
+  title: "For Parents: Resources & Information",
+  description:
+    "Costs, safety, welfare and duty of care — the information parents need before sending a child to study in Australia.",
+  path: "/services/parents-resources",
+});
+
 
 const parentResources = [
   { title: "AQF Qualification Structures", desc: "Understanding the Australian Qualifications Framework (from diplomas, bachelors, to masters) and credit transfers." },
@@ -17,11 +26,19 @@ const parentResources = [
 export default function ParentsResources() {
   return (
     <div className="flex flex-col w-full bg-white text-slate-900">
+      <BreadcrumbSchema items={[
+          { name: "Our Services", path: "/services" },
+          { name: "For Parents: Resources & Information", path: "/services/parents-resources" },
+        ]} />
+      <ServiceSchema
+        name="For Parents: Resources & Information"
+        description="Costs, safety, welfare and duty of care — the information parents need before sending a child to study in Australia."
+        path="/services/parents-resources"
+      />
       <PageHero 
         title="For Parents: Resources & Information" 
         subtitle="Clarity, comfort, and absolute reassurance for parents making major education decisions."
         breadcrumb="Services / Parents Resources"
-        bgImage="https://images.unsplash.com/photo-1542037104857-ffbb0b9155fb?q=80&w=2940&auto=format&fit=crop"
       />
 
       {/* Intro Section */}
@@ -54,7 +71,7 @@ export default function ParentsResources() {
             <div className="lg:col-span-5 relative flex justify-center items-center h-[320px]">
               <div className="absolute inset-0 bg-slate-200/30 blur-3xl rounded-full z-0 pointer-events-none" />
               <div className="relative w-64 h-80 rounded-[2rem] overflow-hidden border border-white/20 shadow-2xl rotate-[-6deg] group hover:rotate-0 transition-transform duration-500 z-10">
-                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2940&auto=format&fit=crop" alt="Parents" className="w-full h-full object-cover" />
+                <img src="/img/students-collaborating.jpg" alt="Parents" className="w-full h-full object-cover" />
               </div>
             </div>
           </div>

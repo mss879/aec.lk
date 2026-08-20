@@ -1,4 +1,7 @@
+import type { Metadata } from "next";
 import { countries } from "@/data/countries";
+import { pageMetadata } from "@/lib/site";
+import { BreadcrumbSchema } from "@/components/seo/json-ld";
 import { PageHero } from "@/components/ui/page-hero";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -12,22 +15,55 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function CountryPage({ params }: { params: { country: string } }) {
-  const countryId = params.country;
-  
-  const country = countries.find(c => c.id === countryId);
-  
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ country: string }>;
+}): Promise<Metadata> {
+  const { country: countryId } = await params;
+  const country = countries.find((c) => c.id === countryId);
+
+  if (!country) {
+    return { title: "Destination not found" };
+  }
+
+  return pageMetadata({
+    title: `Study in ${country.name}`,
+    // Meta descriptions truncate around 160 characters. Both cost figures plus
+    // the tagline overrun that, and a half-cut tagline reads badly in a SERP —
+    // so keep the tagline whole and lead with tuition only.
+    // Taglines carry no trailing punctuation, so add the sentence break here.
+    description: `${country.tagline.replace(/[.\s]+$/, "")}. Tuition from ${country.tuitionFees}. Course and student visa guidance from AEC.`,
+    path: `/study-worldwide/${country.id}`,
+    image: country.image,
+  });
+}
+
+export default async function CountryPage({
+  params,
+}: {
+  params: Promise<{ country: string }>;
+}) {
+  const { country: countryId } = await params;
+
+  const country = countries.find((c) => c.id === countryId);
+
   if (!country) {
     notFound();
   }
 
   return (
     <div className="flex flex-col w-full bg-white text-slate-900">
+      <BreadcrumbSchema
+        items={[
+          { name: "Study Worldwide", path: "/study-worldwide" },
+          { name: country.name, path: `/study-worldwide/${country.id}` },
+        ]}
+      />
       <PageHero 
         title={`Study in ${country.name}`} 
         subtitle={country.tagline}
         breadcrumb={`Study Worldwide / ${country.name}`}
-        bgImage={country.image}
       />
 
       <section className="py-24 bg-white">
