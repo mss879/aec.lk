@@ -12,7 +12,7 @@ export type UploadResult =
   | { ok: true; image: UploadedImage }
   | { ok: false; error: string };
 
-const BUCKETS: ImageBucket[] = ["testimonials", "blog"];
+const BUCKETS: ImageBucket[] = ["testimonials", "blog", "visa-news", "visa-grants"];
 
 /**
  * Shared image upload endpoint for the back office, used by both the

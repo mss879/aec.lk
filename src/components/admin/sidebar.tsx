@@ -9,6 +9,9 @@ import {
   SquareKanban,
   Quote,
   Newspaper,
+  MessagesSquare,
+  ScrollText,
+  Stamp,
   LogOut,
   Menu,
   X,
@@ -37,12 +40,35 @@ const navItems = [
     hint: "Lead pipeline",
   },
   {
-    name: "Testimonials",
+    name: "AI Chats",
+    href: "/admin/chats",
+    icon: MessagesSquare,
+    hint: "Live conversations & history",
+  },
+  {
+    name: "Customer Reviews",
     href: "/admin/testimonials",
     icon: Quote,
-    hint: "Client stories",
+    hint: "Ratings and quotes",
   },
-  { name: "Blog", href: "/admin/blog", icon: Newspaper, hint: "Articles" },
+  {
+    name: "Blog Articles",
+    href: "/admin/blog",
+    icon: Newspaper,
+    hint: "Long-form articles",
+  },
+  {
+    name: "Student Visa News",
+    href: "/admin/visa-news",
+    icon: ScrollText,
+    hint: "Policy and processing updates",
+  },
+  {
+    name: "Success Stories",
+    href: "/admin/success-stories",
+    icon: Stamp,
+    hint: "Visa grants",
+  },
 ] as const;
 
 function isActive(pathname: string, href: string) {

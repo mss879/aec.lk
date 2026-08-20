@@ -6,6 +6,7 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { Preloader } from "@/components/layout/preloader";
 import { SiteChrome } from "@/components/layout/site-chrome";
+import { AiChatWidget } from "@/components/ai-chat-widget";
 import { OrganizationSchema } from "@/components/seo/organization-schema";
 import { siteDescription, siteName, siteUrl } from "@/lib/site";
 
@@ -107,6 +108,7 @@ export default function RootLayout({
           </main>
           <SiteChrome>
             <Footer />
+            <AiChatWidget />
           </SiteChrome>
         </ThemeProvider>
       </body>

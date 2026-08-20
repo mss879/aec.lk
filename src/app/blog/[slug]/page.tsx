@@ -2,6 +2,7 @@ import { cache } from "react";
 import type { Metadata } from "next";
 import { siteName, siteUrl } from "@/lib/site";
 import { BreadcrumbSchema } from "@/components/seo/json-ld";
+import { ShareLinks } from "@/components/share-links";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -262,8 +263,12 @@ export default async function BlogPostPage({
             })
           )}
 
+          <div className="mt-12 border-t border-slate-200 pt-8">
+            <ShareLinks path={`/blog/${post.slug}`} title={post.title} />
+          </div>
+
           {post.tags.length > 0 && (
-            <div className="mt-12 flex flex-wrap gap-2 border-t border-slate-200 pt-8">
+            <div className="mt-8 flex flex-wrap gap-2">
               {post.tags.map((tag) => (
                 <span
                   key={tag}

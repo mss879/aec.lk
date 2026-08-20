@@ -27,6 +27,21 @@ export type InquiryStatus =
 export type LeadPriority = "low" | "medium" | "high";
 export type LeadStatus = "open" | "won" | "lost";
 export type BlogStatus = "draft" | "published";
+export type ChatRole = "user" | "assistant" | "admin";
+export type ChatSessionStatus = "open" | "closed";
+export type VisaNewsStatus = "draft" | "published";
+
+export const VISA_NEWS_CATEGORIES = [
+  "Policy Update",
+  "Processing Times",
+  "Fees & Charges",
+  "Occupation Lists",
+  "English Requirements",
+  "Work Rights",
+  "Other",
+] as const;
+
+export type VisaNewsCategory = (typeof VISA_NEWS_CATEGORIES)[number];
 export type ActivityType =
   | "note"
   | "call"
@@ -287,6 +302,170 @@ export type Database = {
         Update: Partial<Database["public"]["Tables"]["blog_posts"]["Insert"]>;
         Relationships: [];
       };
+
+      visa_news: {
+        Row: {
+          id: string;
+          title: string;
+          slug: string;
+          summary: string | null;
+          content: string;
+          category: VisaNewsCategory;
+          effective_date: string | null;
+          source_name: string | null;
+          source_url: string | null;
+          cover_image_url: string | null;
+          cover_image_path: string | null;
+          is_pinned: boolean;
+          status: VisaNewsStatus;
+          published_at: string | null;
+          seo_title: string | null;
+          seo_description: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          title: string;
+          slug: string;
+          summary?: string | null;
+          content?: string;
+          category?: VisaNewsCategory;
+          effective_date?: string | null;
+          source_name?: string | null;
+          source_url?: string | null;
+          cover_image_url?: string | null;
+          cover_image_path?: string | null;
+          is_pinned?: boolean;
+          status?: VisaNewsStatus;
+          published_at?: string | null;
+          seo_title?: string | null;
+          seo_description?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: Partial<Database["public"]["Tables"]["visa_news"]["Insert"]>;
+        Relationships: [];
+      };
+
+      visa_grants: {
+        Row: {
+          id: string;
+          student_name: string;
+          slug: string;
+          nationality: string | null;
+          visa_subclass: string;
+          visa_label: string | null;
+          course: string | null;
+          institution: string | null;
+          destination_country: string;
+          grant_date: string | null;
+          processing_days: number | null;
+          summary: string | null;
+          story: string;
+          consultant_name: string | null;
+          photo_url: string | null;
+          photo_path: string | null;
+          consent_on_file: boolean;
+          is_published: boolean;
+          is_featured: boolean;
+          position: number;
+          seo_title: string | null;
+          seo_description: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          student_name: string;
+          slug: string;
+          nationality?: string | null;
+          visa_subclass: string;
+          visa_label?: string | null;
+          course?: string | null;
+          institution?: string | null;
+          destination_country?: string;
+          grant_date?: string | null;
+          processing_days?: number | null;
+          summary?: string | null;
+          story?: string;
+          consultant_name?: string | null;
+          photo_url?: string | null;
+          photo_path?: string | null;
+          consent_on_file?: boolean;
+          is_published?: boolean;
+          is_featured?: boolean;
+          position?: number;
+          seo_title?: string | null;
+          seo_description?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: Partial<Database["public"]["Tables"]["visa_grants"]["Insert"]>;
+        Relationships: [];
+      };
+
+      ai_chat_messages: {
+        Row: {
+          id: string;
+          session_id: string;
+          role: ChatRole;
+          content: string;
+          admin_id: string | null;
+          author_name: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          session_id: string;
+          role: ChatRole;
+          content: string;
+          admin_id?: string | null;
+          author_name?: string | null;
+          created_at?: string;
+        };
+        Update: Partial<
+          Database["public"]["Tables"]["ai_chat_messages"]["Insert"]
+        >;
+        Relationships: [];
+      };
+
+      ai_chat_sessions: {
+        Row: {
+          id: string;
+          session_id: string;
+          status: ChatSessionStatus;
+          agent_enabled: boolean;
+          visitor_name: string | null;
+          visitor_phone: string | null;
+          lead_id: string | null;
+          first_page: string | null;
+          message_count: number;
+          last_message_at: string;
+          admin_read_at: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          session_id: string;
+          status?: ChatSessionStatus;
+          agent_enabled?: boolean;
+          visitor_name?: string | null;
+          visitor_phone?: string | null;
+          lead_id?: string | null;
+          first_page?: string | null;
+          message_count?: number;
+          last_message_at?: string;
+          admin_read_at?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: Partial<
+          Database["public"]["Tables"]["ai_chat_sessions"]["Insert"]
+        >;
+        Relationships: [];
+      };
     };
 
     Views: Record<never, never>;
@@ -318,3 +497,7 @@ export type Lead = PublicTables["leads"]["Row"];
 export type LeadActivity = PublicTables["lead_activities"]["Row"];
 export type Testimonial = PublicTables["testimonials"]["Row"];
 export type BlogPost = PublicTables["blog_posts"]["Row"];
+export type VisaNewsItem = PublicTables["visa_news"]["Row"];
+export type VisaGrant = PublicTables["visa_grants"]["Row"];
+export type AiChatMessage = PublicTables["ai_chat_messages"]["Row"];
+export type AiChatSession = PublicTables["ai_chat_sessions"]["Row"];

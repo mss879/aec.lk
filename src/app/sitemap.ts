@@ -54,6 +54,8 @@ const staticRoutes: { path: string; priority: number; changeFrequency: MetadataR
 
   { path: "/testimonials", priority: 0.7, changeFrequency: "weekly" },
   { path: "/blog", priority: 0.8, changeFrequency: "weekly" },
+  { path: "/visa-news", priority: 0.8, changeFrequency: "weekly" },
+  { path: "/success-stories", priority: 0.8, changeFrequency: "weekly" },
   { path: "/contact", priority: 0.9, changeFrequency: "yearly" },
 
   { path: "/privacy", priority: 0.3, changeFrequency: "yearly" },
@@ -88,6 +90,52 @@ async function blogEntries(): Promise<MetadataRoute.Sitemap> {
   }
 }
 
+/** Published visa news items, same failure posture as blogEntries. */
+async function visaNewsEntries(): Promise<MetadataRoute.Sitemap> {
+  try {
+    const supabase = await createClient();
+    const { data, error } = await supabase
+      .from("visa_news")
+      .select("slug, published_at, updated_at")
+      .eq("status", "published")
+      .not("published_at", "is", null)
+      .lte("published_at", new Date().toISOString());
+
+    if (error || !data) return [];
+
+    return data.map((item) => ({
+      url: `${siteUrl}/visa-news/${item.slug}`,
+      lastModified: new Date(item.updated_at ?? item.published_at ?? Date.now()),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    }));
+  } catch {
+    return [];
+  }
+}
+
+/** Published success stories, same failure posture as blogEntries. */
+async function successStoryEntries(): Promise<MetadataRoute.Sitemap> {
+  try {
+    const supabase = await createClient();
+    const { data, error } = await supabase
+      .from("visa_grants")
+      .select("slug, updated_at")
+      .eq("is_published", true);
+
+    if (error || !data) return [];
+
+    return data.map((story) => ({
+      url: `${siteUrl}/success-stories/${story.slug}`,
+      lastModified: new Date(story.updated_at ?? Date.now()),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    }));
+  } catch {
+    return [];
+  }
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
 
@@ -105,5 +153,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.6,
     })),
     ...(await blogEntries()),
+    ...(await visaNewsEntries()),
+    ...(await successStoryEntries()),
   ];
 }

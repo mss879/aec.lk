@@ -124,6 +124,8 @@ const footerNav: { title: string; href: string; links: { name: string; href: str
       { name: "Why Choose AEC", href: "/about#why-us" },
       { name: "Professional Credentials", href: "/about/credentials" },
       { name: "Student Testimonials", href: "/testimonials" },
+      { name: "Visa Grant Success Stories", href: "/success-stories" },
+      { name: "Student Visa News", href: "/visa-news" },
       { name: "Blog & Insights", href: "/blog" },
       { name: "Contact Us", href: "/contact" },
     ],

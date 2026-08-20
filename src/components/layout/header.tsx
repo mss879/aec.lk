@@ -132,6 +132,8 @@ const navLinks: NavLink[] = [
         title: "Insights & Stories",
         links: [
           { name: "Testimonials", href: "/testimonials" },
+          { name: "Visa Grant Success Stories", href: "/success-stories" },
+          { name: "Student Visa News", href: "/visa-news" },
           { name: "Blog", href: "/blog" },
         ]
       }

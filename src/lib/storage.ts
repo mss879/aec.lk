@@ -2,7 +2,7 @@ import "server-only";
 
 import { createClient } from "@/lib/supabase/server";
 
-export type ImageBucket = "testimonials" | "blog";
+export type ImageBucket = "testimonials" | "blog" | "visa-news" | "visa-grants";
 
 export type UploadedImage = {
   /** Public URL to render. */
