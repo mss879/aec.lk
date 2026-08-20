@@ -9,12 +9,15 @@ const SEEN_KEY = "aec-preloader-seen";
 /**
  * How long the splash holds before it starts leaving.
  *
- * This used to be 2200ms plus an 800ms exit — three seconds of white screen on
- * every cold load, which is dead weight in every field metric Google collects.
- * 900ms is long enough to read the mark and short enough not to be the reason
- * the page feels slow.
+ * Tied to the animation below, not picked for feel: the "WELCOME" wipe starts
+ * at 0.4s and runs for 1.0s, so the word is not fully typed until 1.4s. Any
+ * shorter and the splash exits mid-word — which is exactly what 900ms did.
+ * 1.7s finishes the wipe and leaves a beat to read it.
+ *
+ * This is still well down from the original 2200ms + 800ms exit, and it only
+ * runs on the first page view in a tab.
  */
-const HOLD_MS = 900;
+const HOLD_MS = 1700;
 
 export function Preloader() {
   // Rendered on the server too, so it must start true and be dismissed on the
