@@ -18,20 +18,7 @@ const HONEYPOT_FIELD = "company_website";
 
 const initialState: ConsultationFormState = { status: "idle" };
 
-/**
- * The option values double as what we store on the inquiry, so the back office
- * shows "PR Pathway Planning" rather than a slug like `pr`.
- */
-const INTEREST_OPTIONS = [
-  "Study in Australia",
-  "Study Worldwide",
-  "PR Pathway Planning",
-  "Partner & Family Visas",
-  "Australian Schools Sector",
-  "University Exploration Tours",
-  "IELTS & PTE Test Prep",
-  "Other",
-];
+import { INTEREST_OPTIONS } from "@/lib/interests";
 
 const fieldClass =
   "w-full h-12 px-4 rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/30 text-sm text-slate-900";

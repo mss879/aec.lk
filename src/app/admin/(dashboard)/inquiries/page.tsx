@@ -29,6 +29,7 @@ import {
 } from "@/components/admin/ui";
 import { cn } from "@/lib/utils";
 import { SourceBadge } from "./source-badge";
+import { INTEREST_OPTIONS } from "@/lib/interests";
 
 const PAGE_SIZE = 25;
 
@@ -40,6 +41,7 @@ type RawSearchParams = {
   status?: string | string[];
   source?: string | string[];
   form?: string | string[];
+  interest?: string | string[];
   q?: string | string[];
   page?: string | string[];
 };
@@ -48,6 +50,7 @@ type Filters = {
   status: InquiryStatus | null;
   source: SourceType | null;
   form: string | null;
+  interest: string | null;
   q: string;
   page: number;
 };
@@ -74,12 +77,14 @@ function readFilters(raw: RawSearchParams): Filters {
   const status = first(raw.status);
   const source = first(raw.source);
   const form = first(raw.form);
+  const interest = first(raw.interest);
   const page = Number.parseInt(first(raw.page), 10);
 
   return {
     status: isInquiryStatus(status) ? status : null,
     source: isSourceType(source) ? source : null,
     form: form.length > 0 && form.length <= 80 ? form : null,
+    interest: interest.length > 0 && interest.length <= 120 ? interest : null,
     q: sanitiseSearch(first(raw.q)),
     page: Number.isFinite(page) && page > 1 ? page : 1,
   };
@@ -93,6 +98,7 @@ function hrefFor(filters: Filters, override: Partial<Filters> = {}): string {
   if (merged.status) params.set("status", merged.status);
   if (merged.source) params.set("source", merged.source);
   if (merged.form) params.set("form", merged.form);
+  if (merged.interest) params.set("interest", merged.interest);
   if (merged.q) params.set("q", merged.q);
   if (merged.page > 1) params.set("page", String(merged.page));
 
@@ -140,6 +146,7 @@ export default async function InquiriesPage({
 
     if (filters.source) builder = builder.eq("source_type", filters.source);
     if (filters.form) builder = builder.eq("source_form", filters.form);
+    if (filters.interest) builder = builder.eq("interest", filters.interest);
     if (searchFilter) builder = builder.or(searchFilter);
     if (status) builder = builder.eq("status", status);
 
@@ -154,6 +161,7 @@ export default async function InquiriesPage({
   if (filters.status) rowsQuery = rowsQuery.eq("status", filters.status);
   if (filters.source) rowsQuery = rowsQuery.eq("source_type", filters.source);
   if (filters.form) rowsQuery = rowsQuery.eq("source_form", filters.form);
+  if (filters.interest) rowsQuery = rowsQuery.eq("interest", filters.interest);
   if (searchFilter) rowsQuery = rowsQuery.or(searchFilter);
 
   const from = (filters.page - 1) * PAGE_SIZE;
@@ -182,7 +190,7 @@ export default async function InquiriesPage({
   const matched = rowsResult.count ?? 0;
   const lastPage = Math.max(1, Math.ceil(matched / PAGE_SIZE));
   const hasFilters = Boolean(
-    filters.status || filters.source || filters.form || filters.q
+    filters.status || filters.source || filters.form || filters.interest || filters.q
   );
 
   // Show the active form filter even when it is not one we ship a label for —
@@ -190,6 +198,11 @@ export default async function InquiriesPage({
   const formOptions: string[] = [...FORM_SOURCE_KEYS];
   if (filters.form && !isFormSourceKey(filters.form)) {
     formOptions.push(filters.form);
+  }
+
+  const interestOptions: string[] = [...INTEREST_OPTIONS];
+  if (filters.interest && !interestOptions.includes(filters.interest)) {
+    interestOptions.push(filters.interest);
   }
 
   return (
@@ -234,13 +247,13 @@ export default async function InquiriesPage({
         <form
           method="get"
           action="/admin/inquiries"
-          className="flex flex-col gap-3 sm:flex-row sm:items-end"
+          className="flex flex-col gap-3 sm:flex-row sm:items-end flex-wrap"
         >
           {filters.status && (
             <input type="hidden" name="status" value={filters.status} />
           )}
 
-          <label className="flex-1 space-y-1.5">
+          <label className="flex-1 min-w-[200px] space-y-1.5">
             <span className="block text-xs font-bold uppercase tracking-wide text-slate-600">
               Search
             </span>
@@ -254,6 +267,24 @@ export default async function InquiriesPage({
                 className={cn(inputClass, "pl-9")}
               />
             </span>
+          </label>
+
+          <label className="space-y-1.5">
+            <span className="block text-xs font-bold uppercase tracking-wide text-slate-600">
+              Interest
+            </span>
+            <select
+              name="interest"
+              defaultValue={filters.interest ?? ""}
+              className={cn(inputClass, "sm:w-52")}
+            >
+              <option value="">Any interest</option>
+              {interestOptions.map((opt) => (
+                <option key={opt} value={opt}>
+                  {opt}
+                </option>
+              ))}
+            </select>
           </label>
 
           <label className="space-y-1.5">
@@ -281,7 +312,7 @@ export default async function InquiriesPage({
             <select
               name="form"
               defaultValue={filters.form ?? ""}
-              className={cn(inputClass, "sm:w-56")}
+              className={cn(inputClass, "sm:w-52")}
             >
               <option value="">Any form</option>
               {formOptions.map((key) => (
