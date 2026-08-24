@@ -30,6 +30,7 @@ const INTEREST_OPTIONS = [
   "Australian Schools Sector",
   "University Exploration Tours",
   "IELTS & PTE Test Prep",
+  "Other",
 ];
 
 const fieldClass =

@@ -47,11 +47,11 @@ Key claims (all appear on the website):
 # OFFICES & CONTACT
 
 - Head Office (Colombo): No. 421/1/1, Thimbirigasyaya Road, Colombo 05, Sri Lanka.
-  Phone +94 11 5500100; mobiles +94 77 107 6990, +94 77 107 6991.
+  Phone +94 11 5500100; mobiles +94 77 107 6990, +94 77 107 0991, +94 77 107 6991.
   Hours: Mon–Fri 8:30 AM–6:30 PM, Sat 9:30 AM–5:30 PM, 2nd & 4th Sunday 9:30 AM–5:30 PM.
-- Melbourne: Unit 1/11-15 Rocklea Drive, Port Melbourne, VIC 3207. +61 489 980 366. Mon–Fri 9:00–5:30.
-- Adelaide: Level 1, 90 King William Street, Adelaide, SA 5000. +61 489 980 366. Mon–Fri 9:00–5:30.
-- Dubai: Office 9, Level 17, Boulevard Plaza Tower 1, Downtown Dubai, UAE. +971 58 596 0366. Mon–Fri 9:00–5:30.
+- Melbourne: Unit 1/11-15 Rocklea Drive, Port Melbourne, VIC 3207. Direct: +61 1300 512 636, Mobile: +61 489 907 755. Mon–Fri 9:00–5:30.
+- Adelaide: 35 Golflinks Road, Adelaide, SA 5152. Direct: +61 1300 512 636, Mobile: +61 489 907 755. Mon–Fri 9:00–5:30.
+- Dubai: Shams Business Center, Sharjah Media City Free Zone, Al Messaned, Sharjah, UAE. Direct: +971 50 779 4262. Mon–Fri 9:00–5:30.
 - Email: edu@multinational.com.au. WhatsApp: +94 77 107 6990 (https://wa.me/94771076990).
 - Booking page: /contact (free consultation form).
 

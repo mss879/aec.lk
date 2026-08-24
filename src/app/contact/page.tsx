@@ -21,7 +21,7 @@ const offices = [
     name: "Australian Education Centre (Pvt) Ltd",
     address: "No. 421/1/1, Thimbirigasyaya Road, Colombo 05, Sri Lanka",
     phone: "+94 11 5500100",
-    mobiles: ["+94 77 107 6990", "+94 77 107 6991"],
+    mobiles: ["+94 77 107 6990", "+94 77 107 0991", "+94 77 107 6991"],
     email: "edu@multinational.com.au",
     hours: [
       "Monday - Friday: 8:30 AM to 6:30 PM",
@@ -33,24 +33,26 @@ const offices = [
     city: "Melbourne Office",
     name: "Australian Education Centre",
     address: "Unit 1/11-15 Rocklea Drive, Port Melbourne, Victoria 3207, Australia",
-    phone: "+61 489 980 366",
-    email: "melbourne@multinational.com.au",
+    phone: "+61 1300 512 636",
+    mobiles: ["+61 489 907 755"],
+    email: "edu@multinational.com.au",
     hours: ["Monday - Friday: 9:00 AM to 5:30 PM"]
   },
   {
     city: "Adelaide Office",
     name: "Australian Education Centre",
-    address: "Level 1, 90 King William Street, Adelaide, South Australia 5000, Australia",
-    phone: "+61 489 980 366",
-    email: "adelaide@multinational.com.au",
+    address: "35 Golflinks Road, Adelaide, South Australia 5152, Australia",
+    phone: "+61 1300 512 636",
+    mobiles: ["+61 489 907 755"],
+    email: "edu@multinational.com.au",
     hours: ["Monday - Friday: 9:00 AM to 5:30 PM"]
   },
   {
     city: "Dubai Office",
     name: "Australian Education Centre",
-    address: "Office 9, Level 17, Boulevard Plaza Tower 1, Sheikh Mohammed Bin Rashid Boulevard, Downtown Dubai, United Arab Emirates",
-    phone: "+971 58 596 0366",
-    email: "dubai@multinational.com.au",
+    address: "Shams Business Center, Sharjah Media City Free Zone, Al Messaned, Sharjah, UAE",
+    phone: "+971 50 779 4262",
+    email: "edu@multinational.com.au",
     hours: ["Monday - Friday: 9:00 AM to 5:30 PM"]
   }
 ];
