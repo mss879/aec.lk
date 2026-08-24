@@ -55,7 +55,7 @@ const MAX_HISTORY_MESSAGES = 20;
 const MAX_MESSAGE_CHARS = 2_000;
 
 const FALLBACK_REPLY =
-  "I'm having a little trouble right now. You can reach our counsellors directly at **edu@multinational.com.au**, call **+94 77 395 0448**, or book a free consultation at /contact.";
+  "I'm having a little trouble right now. You can reach our counsellors directly at **edu@multinational.com.au**, call **+94 77 107 6990**, or book a free consultation at /contact.";
 
 type ChatMessage = { role: "user" | "assistant"; content: string };
 

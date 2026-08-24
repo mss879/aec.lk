@@ -83,7 +83,7 @@ export default function PrivacyPolicyPage() {
             <li><strong>Partner Institutions:</strong> Universities, TAFEs, polytechnics, colleges, and language schools to which you authorize us to apply.</li>
             <li><strong>Government & Immigration Authorities:</strong> The Australian Department of Home Affairs, Immigration New Zealand, and associated visa processing centres when submitting or auditing visa filings.</li>
             <li><strong>Accredited Assessment Bodies:</strong> Professional qualification boards, credential evaluators, and English language testing providers for verification.</li>
-            <li><strong>Associated Legal Entities:</strong> Our registered sister migration firm, Australian Migration Services (AMS), for certified MARA legal migration oversight.</li>
+            <li><strong>Associated Legal Entities:</strong> Our registered sister migration firm, Australian Migration Services (Pvt) Ltd (AMS), for certified MARA legal migration oversight.</li>
             <li><strong>Secure Cloud Infrastructure Providers:</strong> ISO-certified hosting, database, and CRM vendors bound by strict data processing and non-disclosure agreements.</li>
           </ul>
         </div>
@@ -159,7 +159,7 @@ export default function PrivacyPolicyPage() {
             </div>
             <div className="flex items-center gap-2">
               <Phone className="w-4 h-4 text-[#124b8d] shrink-0" />
-              <span>+94 11 5500100 / +94 77 395 0448</span>
+              <span>+94 11 5500100 / +94 77 107 6990</span>
             </div>
             <div className="flex items-center gap-2">
               <Mail className="w-4 h-4 text-[#124b8d] shrink-0" />

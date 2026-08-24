@@ -29,7 +29,7 @@ export const KNOWLEDGE = `
 
 Australian Education Centre (Pvt) Ltd is the education division of Multinational
 Holdings (established 20+ years ago in Melbourne, Australia), and a sister
-company to Australian Migration Services (AMS), a MARA-registered migration
+company to Australian Migration Services (Pvt) Ltd (AMS), a MARA-registered migration
 firm. AEC combines certified university counselling with legal migration advice.
 
 Key claims (all appear on the website):
@@ -47,12 +47,12 @@ Key claims (all appear on the website):
 # OFFICES & CONTACT
 
 - Head Office (Colombo): No. 421/1/1, Thimbirigasyaya Road, Colombo 05, Sri Lanka.
-  Phone +94 11 5500100; mobiles +94 77 395 0448, +94 77 107 6990, +94 77 107 6991.
+  Phone +94 11 5500100; mobiles +94 77 107 6990, +94 77 107 6991.
   Hours: Mon–Fri 8:30 AM–6:30 PM, Sat 9:30 AM–5:30 PM, 2nd & 4th Sunday 9:30 AM–5:30 PM.
 - Melbourne: Unit 1/11-15 Rocklea Drive, Port Melbourne, VIC 3207. +61 489 980 366. Mon–Fri 9:00–5:30.
 - Adelaide: Level 1, 90 King William Street, Adelaide, SA 5000. +61 489 980 366. Mon–Fri 9:00–5:30.
 - Dubai: Office 9, Level 17, Boulevard Plaza Tower 1, Downtown Dubai, UAE. +971 58 596 0366. Mon–Fri 9:00–5:30.
-- Email: edu@multinational.com.au. WhatsApp: +94 77 395 0448 (https://wa.me/94773950448).
+- Email: edu@multinational.com.au. WhatsApp: +94 77 107 6990 (https://wa.me/94771076990).
 - Booking page: /contact (free consultation form).
 
 # SERVICES (site: /services)

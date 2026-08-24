@@ -13,12 +13,13 @@ export const siteUrl = (
 export const siteName = "Australian Education Centre";
 
 export const siteDescription =
-  "Australian Education Centre (AEC) guides students from Sri Lanka to Australia, New Zealand and beyond — course selection, applications, student visas, PR pathways and post-arrival support.";
+  "Australian Education Centre (AEC) guides students from Sri Lanka to Australia, NZ & Globally — course selection, applications, student visas, PR pathways and post-arrival support.";
 
 export const socialProfiles = [
   "https://www.facebook.com/australianeducationcentre",
   "https://www.instagram.com/australian_edu",
   "https://www.tiktok.com/@australianeducentre",
+  "https://www.linkedin.com/company/australian-education-centre/",
 ];
 
 export const offices = [

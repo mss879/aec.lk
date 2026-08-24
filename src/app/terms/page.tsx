@@ -156,7 +156,7 @@ export default function TermsAndConditionsPage() {
             </div>
             <div className="flex items-center gap-2">
               <Phone className="w-4 h-4 text-[#124b8d] shrink-0" />
-              <span>+94 11 5500100 / +94 77 395 0448</span>
+              <span>+94 11 5500100 / +94 77 107 6990</span>
             </div>
             <div className="flex items-center gap-2">
               <Mail className="w-4 h-4 text-[#124b8d] shrink-0" />

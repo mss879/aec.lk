@@ -142,7 +142,7 @@ const socials = [
   { name: "Facebook", href: "https://www.facebook.com/australianeducationcentre", Icon: FacebookIcon },
   { name: "Instagram", href: "https://www.instagram.com/australian_edu", Icon: InstagramIcon },
   { name: "TikTok", href: "https://www.tiktok.com/@australianeducentre", Icon: TiktokIcon },
-  { name: "LinkedIn", href: "", Icon: LinkedinIcon },
+  { name: "LinkedIn", href: "https://www.linkedin.com/company/australian-education-centre/", Icon: LinkedinIcon },
   { name: "YouTube", href: "", Icon: YoutubeIcon },
 ].filter((social) => social.href !== "");
 
@@ -169,7 +169,7 @@ export function Footer() {
               <ArrowUpRight className="w-4 h-4" />
             </Link>
             <a
-              href="https://wa.me/94773950448"
+              href="https://wa.me/94771076990"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-white border-2 border-slate-900 text-slate-900 rounded-xl px-6 py-3 text-[12px] font-black uppercase tracking-widest shadow-[4px_4px_0px_rgba(15,23,42,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_rgba(15,23,42,1)] transition-all"
@@ -196,7 +196,7 @@ export function Footer() {
               />
             </Link>
             <p className="text-[13px] leading-relaxed text-slate-600">
-              Your complete journey to Australia, New Zealand &amp; global education.
+              Your complete journey to Australia, NZ &amp; Globally.
               From visa to career success &mdash; we&apos;re with you every step.
             </p>
 
@@ -217,10 +217,10 @@ export function Footer() {
                     +94 11 5500100
                   </a>
                   <a
-                    href="tel:+94773950448"
+                    href="tel:+94771076990"
                     className="inline-flex min-h-6 items-center hover:text-[#124b8d] transition-colors"
                   >
-                    +94 77 395 0448
+                    +94 77 107 6990
                   </a>
                 </span>
               </li>

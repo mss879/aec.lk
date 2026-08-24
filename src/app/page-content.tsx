@@ -253,7 +253,7 @@ export function HomeContent() {
               Why We&apos;re Different From <br className="hidden md:block" /> Other Education Agents
             </h2>
             <p className="text-slate-600 max-w-2xl text-lg">
-              We don&apos;t just get you a visa - we build your entire future in Australia or New Zealand
+              We don&apos;t just get you a visa - we build your entire future in Australia, NZ &amp; Globally
             </p>
           </div>
 
@@ -561,19 +561,31 @@ export function HomeContent() {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Featured Destination: Australia */}
-            <div className="lg:col-span-2 bg-slate-100 rounded-3xl border border-slate-100 overflow-hidden relative group h-[400px] lg:h-full">
-              <Image src="/dest_australia.png" alt="Australia" fill
-                  sizes="(max-width: 1024px) 100vw, 640px" className="object-cover group-hover:scale-105 transition-transform duration-700" />
+            <Link
+              href="/study-in-australia"
+              className="lg:col-span-2 bg-slate-100 rounded-3xl border border-slate-100 overflow-hidden relative group h-[400px] lg:h-full block cursor-pointer"
+            >
+              <Image
+                src="/dest_australia.png"
+                alt="Australia"
+                fill
+                sizes="(max-width: 1024px) 100vw, 640px"
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-[#11181C]/90 via-[#11181C]/20 to-transparent"></div>
               <div className="absolute top-6 right-6">
-                <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white">
-                  <ArrowUpRight className="w-6 h-6" />
+                <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white group-hover:bg-blue-600 transition-colors duration-300">
+                  <ArrowUpRight className="w-6 h-6 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
                 </div>
               </div>
               <div className="absolute bottom-8 left-8 right-8 text-white">
-                <div className="bg-blue-600/90 backdrop-blur-sm px-3 py-1.5 text-xs font-bold rounded-lg w-fit mb-4 uppercase tracking-wider">Primary Destination</div>
-                <h3 className="text-4xl font-bold mb-3">Australia</h3>
-                <p className="text-white/80 max-w-lg text-lg mb-6">Top-tier universities, vibrant cities, and a world-class lifestyle. The perfect choice for international students seeking clear PR pathways.</p>
+                <div className="bg-blue-600/90 backdrop-blur-sm px-3 py-1.5 text-xs font-bold rounded-lg w-fit mb-4 uppercase tracking-wider">
+                  Primary Destination
+                </div>
+                <h3 className="text-4xl font-bold mb-3 group-hover:text-blue-200 transition-colors">Australia</h3>
+                <p className="text-white/80 max-w-lg text-lg mb-6">
+                  Top-tier universities, vibrant cities, and a world-class lifestyle. The perfect choice for international students seeking clear PR pathways.
+                </p>
 
                 <div className="flex items-center gap-6">
                   <div>
@@ -587,7 +599,7 @@ export function HomeContent() {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
 
             {/* Other Destinations List */}
             <div className="flex flex-col gap-4">
@@ -814,7 +826,7 @@ export function HomeContent() {
 
               <div className="bg-white rounded-3xl p-8 mb-6 border border-slate-100 shadow-sm">
                 <div className="text-sm font-semibold text-[#11181C] mb-2">24/7 Support</div>
-                <a href="tel:+94773950448" className="block text-2xl font-medium text-[#11181C] mb-6 hover:text-blue-600 transition-colors">+94 77 395 0448</a>
+                <a href="tel:+94771076990" className="block text-2xl font-medium text-[#11181C] mb-6 hover:text-blue-600 transition-colors">+94 77 107 6990</a>
 
                 <div className="w-full h-px bg-slate-200/60 mb-6"></div>
 
@@ -945,7 +957,7 @@ export function HomeContent() {
                   <Link href="/contact?booking=true" className="w-full sm:w-auto inline-flex items-center justify-center bg-white text-[#0A192F] rounded-full px-8 py-4 text-sm font-semibold transition-transform hover:scale-105">
                     <Calendar className="mr-2" size={18} /> Book a Consultation
                   </Link>
-                  <a href="tel:+94773950448" className="w-full sm:w-auto inline-flex items-center justify-center bg-transparent border border-slate-700 text-white hover:bg-slate-800 rounded-full px-8 py-4 text-sm font-semibold transition-colors">
+                  <a href="tel:+94771076990" className="w-full sm:w-auto inline-flex items-center justify-center bg-transparent border border-slate-700 text-white hover:bg-slate-800 rounded-full px-8 py-4 text-sm font-semibold transition-colors">
                     <Phone className="mr-2" size={18} /> Call Us Now
                   </a>
                 </div>

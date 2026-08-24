@@ -12,7 +12,7 @@ import Link from "next/link";
 
 const storyTimeline = [
   { year: "2000s", title: "Multinational Holdings Formed", desc: "Established in Melbourne, Victoria, as a diversified group representing long-standing migration and commercial solutions." },
-  { year: "2010s", title: "Sister Alliance with AMS", desc: "Forged a corporate sister alliance with Australian Migration Services (AMS) to align legal migration pathways with education." },
+  { year: "2010s", title: "Sister Alliance with AMS", desc: "Forged a corporate sister alliance with Australian Migration Services (Pvt) Ltd (AMS) to align legal migration pathways with education." },
   { year: "Today", title: "Global Expansion", desc: "Formed dedicated physically staffed offices in Colombo, Adelaide, Melbourne, and Dubai serving thousands of students annually." }
 ];
 
@@ -38,7 +38,7 @@ export function OurStoryContent() {
                 Pioneering Strategic Counseling
               </h2>
               <p className="text-lg text-slate-500 leading-relaxed">
-                Formed as the premier education division of Multinational Holdings, AEC was established as a sister company to Australian Migration Services to solve a crucial industry gap: matching academic counseling to valid, compliant, long-term legal migration and career outcomes. Today, we serve students across Sri Lanka and the UAE with physical office locations.
+                Formed as the premier education division of Multinational Holdings, AEC was established as a sister company to Australian Migration Services (Pvt) Ltd to solve a crucial industry gap: matching academic counseling to valid, compliant, long-term legal migration and career outcomes. Today, we serve students across Sri Lanka and the UAE with physical office locations.
               </p>
             </div>
 

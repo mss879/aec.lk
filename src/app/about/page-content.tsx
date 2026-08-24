@@ -25,7 +25,7 @@ const aboutCards = [
     name: "Our Story",
     href: "/about/our-story",
     icon: <Clock className="w-6 h-6 text-[#124b8d]" />,
-    desc: "AEC combines education counseling with migration pathway guidance as a sister company to Australian Migration Services."
+    desc: "AEC combines education counseling with migration pathway guidance as a sister company to Australian Migration Services (Pvt) Ltd."
   },
   {
     name: "Our Mission & Values",
@@ -46,7 +46,7 @@ export function AboutPortalContent() {
     <div className="flex flex-col w-full bg-white text-slate-900">
       <PageHero 
         title="About AEC" 
-        subtitle="20+ years of established pedigree in Australian, New Zealand, and global education."
+        subtitle="20+ years of established pedigree in Australia, NZ & Globally."
         breadcrumb="About Us"
       />
 
@@ -63,7 +63,7 @@ export function AboutPortalContent() {
                 Two Decades of Empowering International Students
               </h2>
               <p className="text-lg text-slate-500 leading-relaxed">
-                Australian Education Centre is the premier education division of Multinational Holdings, established over 20 years ago in Melbourne, Australia. Formed as a sister company to Australian Migration Services, AEC integrates certified university counseling with legal migration advice.
+                Australian Education Centre is the premier education division of Multinational Holdings, established over 20 years ago in Melbourne, Australia. Formed as a sister company to Australian Migration Services (Pvt) Ltd, AEC integrates certified university counseling with legal migration advice.
               </p>
               
               <div className="grid grid-cols-2 gap-6 pt-4">

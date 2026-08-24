@@ -269,7 +269,7 @@ export function AiChatWidget() {
           role: "assistant",
           content:
             data.content ??
-            "Sorry — something went wrong. Please try again, or call us on **+94 77 395 0448**.",
+            "Sorry — something went wrong. Please try again, or call us on **+94 77 107 6990**.",
         },
       ]);
     } catch {
@@ -278,7 +278,7 @@ export function AiChatWidget() {
         {
           role: "assistant",
           content:
-            "Sorry — I couldn't reach our servers just now. Please try again in a moment, or call us on **+94 77 395 0448**.",
+            "Sorry — I couldn't reach our servers just now. Please try again in a moment, or call us on **+94 77 107 6990**.",
         },
       ]);
     } finally {

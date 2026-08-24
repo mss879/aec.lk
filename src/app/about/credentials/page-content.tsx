@@ -29,7 +29,7 @@ const credentials = [
   },
   {
     title: "MARA Registered Migration Support",
-    desc: "Through our long-standing sister alliance with Australian Migration Services (AMS), our students receive access to registered migration professionals who handle Student, Dependent, Graduate, and Skilled migration visas.",
+    desc: "Through our long-standing sister alliance with Australian Migration Services (Pvt) Ltd (AMS), our students receive access to registered migration professionals who handle Student, Dependent, Graduate, and Skilled migration visas.",
     badge: "MARA Registered",
     icon: <Scale className="w-6 h-6 text-[#e31b23]" />
   },

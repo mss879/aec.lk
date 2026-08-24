@@ -21,7 +21,7 @@ const offices = [
     name: "Australian Education Centre (Pvt) Ltd",
     address: "No. 421/1/1, Thimbirigasyaya Road, Colombo 05, Sri Lanka",
     phone: "+94 11 5500100",
-    mobiles: ["+94 77 395 0448", "+94 77 107 6990", "+94 77 107 6991"],
+    mobiles: ["+94 77 107 6990", "+94 77 107 6991"],
     email: "edu@multinational.com.au",
     hours: [
       "Monday - Friday: 8:30 AM to 6:30 PM",
@@ -75,11 +75,11 @@ export default function Contact() {
             </div>
             <div className="py-4 md:py-0">
               <span className="text-slate-500 text-xs font-bold uppercase tracking-wider block mb-1">WhatsApp Us</span>
-              <a href="https://wa.me/94773950448" target="_blank" rel="noopener noreferrer" className="text-lg font-black text-[#e31b23] hover:underline">+94 77 395 0448</a>
+              <a href="https://wa.me/94771076990" target="_blank" rel="noopener noreferrer" className="text-lg font-black text-[#e31b23] hover:underline">+94 77 107 6990</a>
             </div>
             <div className="py-4 md:py-0">
               <span className="text-slate-500 text-xs font-bold uppercase tracking-wider block mb-1">MARA Registered Sister</span>
-              <span className="text-base font-bold text-slate-700">Australian Migration Services</span>
+              <span className="text-base font-bold text-slate-700">Australian Migration Services (Pvt) Ltd</span>
             </div>
           </div>
         </div>

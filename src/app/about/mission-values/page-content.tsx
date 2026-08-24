@@ -72,7 +72,7 @@ export function MissionValuesContent() {
           <div className="bg-white border border-slate-100 p-8 lg:p-12 rounded-[2.5rem] shadow-[0_15px_50px_rgba(0,0,0,0.03)] max-w-4xl mx-auto relative overflow-hidden">
             <div className="absolute top-0 right-0 w-32 h-32 bg-slate-100/50 rounded-bl-full pointer-events-none" />
             <p className="text-xl md:text-2xl text-[#124b8d] font-medium italic leading-relaxed">
-              &ldquo;To provide honest, expert guidance and comprehensive support services that enable students to achieve their educational dreams in Australia, New Zealand, and worldwide destinations, and successfully transition into fulfilling careers.&rdquo;
+              &ldquo;To provide honest, expert guidance and comprehensive support services that enable students to achieve their educational dreams in Australia, NZ &amp; Globally, and successfully transition into fulfilling careers.&rdquo;
             </p>
           </div>
         </div>

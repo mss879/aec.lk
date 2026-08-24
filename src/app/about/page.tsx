@@ -6,7 +6,7 @@ import { AboutPortalContent } from "./page-content";
 export const metadata: Metadata = pageMetadata({
   title: "About AEC",
   description:
-    "Two decades of Australian, New Zealand and global education placement — AEC's story, mission, values and professional credentials.",
+    "Two decades of education placement in Australia, NZ & Globally — AEC's story, mission, values and professional credentials.",
   path: "/about",
 });
 
