@@ -22,7 +22,7 @@ type Message = {
 const GREETING: Message = {
   role: "assistant",
   content:
-    "Ayubowan! 👋 I'm the **AI agent for Australian Education Centre**. Ask me anything about studying in Australia or 20+ other destinations — courses, costs, visas, scholarships, or bringing your family along.",
+    "Ayubowan! 👋 I'm the **agent for Australian Education Centre**. Ask me anything about studying in Australia or 20+ other destinations — courses, costs, visas, scholarships, or bringing your family along.",
 };
 
 const SESSION_KEY = "aec-assist-session";
@@ -362,7 +362,7 @@ export function AiChatWidget() {
                 <p className="truncate text-[11px] font-medium text-blue-100">
                   {handedOver
                     ? "You're chatting with our team"
-                    : "AI agent for Australian Education Centre"}
+                    : "Agent for Australian Education Centre"}
                 </p>
               </div>
               <button

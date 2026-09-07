@@ -198,7 +198,7 @@ export function Header() {
           {/* Logo */}
           <Link
             href="/"
-            className={`flex items-center shrink-0 z-50 ml-2 sm:ml-4 lg:ml-6 2xl:ml-8 transition-all duration-300 ${isScrolled ? "mt-0" : "mt-4"
+            className={`flex flex-col items-center shrink-0 z-50 ml-2 sm:ml-4 lg:ml-6 2xl:ml-8 transition-all duration-300 ${isScrolled ? "gap-0.5" : "gap-1"
               }`}
           >
             {/* next/image, not a raw <img>: the source is a 540x600 PNG that
@@ -213,15 +213,31 @@ export function Header() {
               width={216}
               height={240}
               priority
-              className={`w-auto object-contain transition-all duration-300 ${isScrolled ? "h-12 md:h-14" : "h-20 md:h-24"
+              className={`w-auto object-contain transition-all duration-300 ${isScrolled ? "h-10 md:h-12" : "h-16 md:h-20"
                 }`}
             />
+            {/* The company name is set in tiny curved type inside the crest
+                artwork and is unreadable at nav size, so it is repeated here
+                as real text. aria-hidden: the Image alt already names the
+                link, and a second copy would double-announce it.
+
+                It stays in normal flow: the line is wider than the crest,
+                so absolutely centring it under the crest pushed it off the
+                left edge of the page. In flow it widens the logo block
+                instead, and the desktop nav below is sized to leave room. */}
+            <span
+              aria-hidden="true"
+              className={`whitespace-nowrap font-black uppercase leading-none tracking-[0.06em] text-[#124b8d] transition-all duration-300 ${isScrolled ? "text-[6px] md:text-[7px]" : "text-[7px] md:text-[8px]"
+                }`}
+            >
+              Australian Education Centre
+            </span>
           </Link>
 
           {/* Desktop Main Nav & Right Side CTA */}
           <div className="flex flex-1 justify-end items-center">
             <nav
-              className={`hidden xl:flex items-center bg-white rounded-2xl pl-2 2xl:pl-4 pr-2 border-[2px] border-slate-900 transition-all duration-300 ${isScrolled
+              className={`hidden xl:flex items-center bg-white rounded-2xl pl-1.5 2xl:pl-4 pr-1.5 2xl:pr-2 border-[2px] border-slate-900 transition-all duration-300 ${isScrolled
                   ? "py-1.5 shadow-[3px_3px_0px_rgba(15,23,42,1)]"
                   : "py-2 shadow-[4px_4px_0px_rgba(15,23,42,1)]"
                 }`}
@@ -237,9 +253,9 @@ export function Header() {
                   >
                     <Link
                       href={link.href}
-                      className={`flex items-center gap-1 2xl:gap-1.5 font-bold transition-all duration-300 rounded-xl ${isScrolled
-                          ? "text-[13px] px-2.5 2xl:px-3.5 py-2"
-                          : "text-[14px] px-3 2xl:px-4 py-2.5"
+                      className={`flex items-center gap-0.5 2xl:gap-1.5 font-bold transition-all duration-300 rounded-xl ${isScrolled
+                          ? "text-[12px] 2xl:text-[13px] px-2 2xl:px-3.5 py-2"
+                          : "text-[13px] 2xl:text-[14px] px-2.5 2xl:px-4 py-2.5"
                         } ${isActive && link.megaMenu
                           ? 'bg-slate-900 text-white'
                           : 'text-slate-800 hover:text-blue-600'
@@ -323,8 +339,8 @@ export function Header() {
               })}
 
               {/* Integrated Apply Now Button */}
-              <div className="pl-2 ml-2 border-l-[2px] border-slate-200">
-                <Link href="/contact" className={`flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-black tracking-widest uppercase transition-all duration-300 ${isScrolled ? "px-4 2xl:px-5 py-2 text-[13px]" : "px-5 2xl:px-6 py-2.5 text-[14px]"}`}>
+              <div className="pl-1.5 ml-1.5 2xl:pl-2 2xl:ml-2 border-l-[2px] border-slate-200">
+                <Link href="/contact" className={`flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-black tracking-widest uppercase transition-all duration-300 ${isScrolled ? "px-3 2xl:px-5 py-2 text-[12px] 2xl:text-[13px]" : "px-3.5 2xl:px-6 py-2.5 text-[13px] 2xl:text-[14px]"}`}>
                   Apply Now
                 </Link>
               </div>
